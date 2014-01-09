@@ -4,6 +4,7 @@
 
 
 //aqui van los comentarios
+//nuevo comentario desde el sitio web
 
 
 int main (int argc, char *argv[])
@@ -71,7 +72,7 @@ int CVICALLBACK PRE_MostrarMenu (int panel, int control, int event,
 			break;
 			
 		case EVENT_MOUSE_POINTER_MOVE:
-			PRE_BarraEstado("Despliega el menú principal del sistema.");
+			PRE_BarraEstado("Despliega el menï¿½ principal del sistema.");
 			break;
 	}
 	return 0;
@@ -81,8 +82,8 @@ int CVICALLBACK PRE_MostrarMenu (int panel, int control, int event,
 
 int PRE_FinalizarAplicacion()
 {
-	if (ConfirmPopup ("Finalizar sesión con el sistema",
-				  "¿Desea cerrar la aplicación?")==1)
+	if (ConfirmPopup ("Finalizar sesiï¿½n con el sistema",
+				  "ï¿½Desea cerrar la aplicaciï¿½n?")==1)
 	{
 		PRE_Finalizar();
 		QuitUserInterface (0);	
