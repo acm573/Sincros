@@ -3,7 +3,7 @@
 #include "pre_variables.h"
 
 
-
+//aqui van los comentarios
 
 
 int main (int argc, char *argv[])

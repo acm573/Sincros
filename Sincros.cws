@@ -1,22 +1,22 @@
 [Workspace Header]
 Version = 1300
-Pathname = "/c/Users/CIDESI/Desktop/Sincros_2013/Sincros.cws"
-CVI Dir = "/c/program files (x86)/national instruments/cvi2013"
-CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
+Pathname = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Sincros.cws"
+CVI Dir = "/c/program files/national instruments/cvi2013"
+CVI Shared Dir = "/C/Program Files/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2013"
 CVI Pub Global Dir = "/C/ProgramData/National Instruments/CVI"
-IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
+IVI Standard Root Dir = "/C/Program Files/IVI Foundation/IVI"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
-VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
+VXIplug&play Framework Dir = "/C/Program Files/IVI Foundation/VISA/winnt"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Sincros.prj"
-Drag Bar Left = 266
-Window Top = 53
-Window Left = 227
-Window Bottom = 997
-Window Right = 1365
+Drag Bar Left = 285
+Window Top = 98
+Window Left = 26
+Window Bottom = 744
+Window Right = 1252
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 0
 Window Confinement Region Enabled = True
-MainColumnWidth = 249
+MainColumnWidth = 268
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -46,27 +46,28 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/c/Program Files (x86)/National Instruments/CVI2013/toolslib/toolbox/toolbox.fp"
+Path = "/c/Program Files/National Instruments/CVI2013/toolslib/toolbox/toolbox.fp"
 File Type = "Function Panel"
 Disk Date = 3455100000
 In Projects = "1,"
 
 [File 0002]
-Path = "/c/Program Files (x86)/National Instruments/CVI2013/toolslib/toolbox/asynctmr.fp"
+Path = "/c/Program Files/National Instruments/CVI2013/toolslib/toolbox/asynctmr.fp"
 File Type = "Function Panel"
 Disk Date = 3455100000
 In Projects = "1,"
 
 [File 0003]
-Path = "/c/Program Files (x86)/National Instruments/CVI2013/toolslib/toolbox/regexpr.fp"
+Path = "/c/Program Files/National Instruments/CVI2013/toolslib/toolbox/regexpr.fp"
 File Type = "Function Panel"
 Disk Date = 3455100000
 In Projects = "1,"
 
 [File 0004]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_EventosEntrenamiento.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_EventosEntrenamiento.c"
 File Type = "CSource"
-Disk Date = 3470149895
+Disk Date = 3470149896
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
@@ -74,9 +75,10 @@ Source Window State = "1,858,858,858,4,20,20,0,0,0,0,828,0,2,0,0,1051,0,1082,67,
 Line Tags = "627,982,1041,1141,"
 
 [File 0005]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/Negocio/Entrenamiento/ENT_Entrenamiento.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/Entrenam"
+Path Line0002 = "iento/ENT_Entrenamiento.c"
 File Type = "CSource"
-Disk Date = 3461844232
+Disk Date = 3461844234
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
@@ -84,43 +86,48 @@ Source Window State = "1,186,186,186,4,29,29,0,0,0,0,1,0,1,0,0,184,0,186,31,323,
 Line Tags = "137,"
 
 [File 0006]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/Negocio/BaseDeDatos/BDS_BaseDeDatos.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/BaseDeDa"
+Path Line0002 = "tos/BDS_BaseDeDatos.h"
 File Type = "Include"
-Disk Date = 3449483488
+Disk Date = 3449483490
 In Projects = "1,"
 Window Top = 272
 Window Left = 138
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349,683,1,0,"
 
 [File 0007]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/Negocio/BaseDeDatos/BDS_Lectura.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/BaseDeDa"
+Path Line0002 = "tos/BDS_Lectura.c"
 File Type = "CSource"
-Disk Date = 3449484186
+Disk Date = 3449484188
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
 Source Window State = "1,6,6,6,4,25,25,0,0,0,0,1,0,1,0,0,0,0,16,4,349,683,1,0,"
 
 [File 0008]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/GRA_Generales/CAN_DespliegaInformacion.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/GRA_Generales/CA"
+Path Line0002 = "N_DespliegaInformacion.c"
 File Type = "CSource"
-Disk Date = 3449750229
+Disk Date = 3449750230
 In Projects = "1,"
 Window Top = 302
 Window Left = 154
 Source Window State = "1,131,143,131,0,0,0,0,0,0,0,0,0,0,0,0,105,0,126,43,349,683,1,0,"
 
 [File 0009]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/COM_Comunicacion/COM_Comunicacion.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/COM_Comunicacion"
+Path Line0002 = "/COM_Comunicacion.c"
 File Type = "CSource"
-Disk Date = 3449684151
+Disk Date = 3449684152
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Source Window State = "1,224,224,224,0,26,0,0,0,0,0,0,0,0,0,0,78,0,100,44,206,587,1,0,"
 
 [File 0010]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/COM_Comunicacion/COM_Comunicacion.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/COM_Comunicacion"
+Path Line0002 = "/COM_Comunicacion.h"
 File Type = "Include"
 Disk Date = 3443813068
 In Projects = "1,"
@@ -129,208 +136,227 @@ Window Left = 26
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44,0,0,0,323,587,1,0,"
 
 [File 0011]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/DIG_Digitales/DIG_Digitales.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/DIG_Digitales/DI"
+Path Line0002 = "G_Digitales.c"
 File Type = "CSource"
-Disk Date = 3462451537
+Disk Date = 3462451538
 In Projects = "1,"
 Window Top = 212
 Window Left = 106
 Source Window State = "1,32,32,32,0,35,0,0,0,0,0,129,0,0,0,0,134,0,145,24,349,627,1,18,"
 
 [File 0012]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/DIG_Digitales/DIG_Digitales.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/DIG_Digitales/DI"
+Path Line0002 = "G_Digitales.h"
 File Type = "Include"
-Disk Date = 3448467729
+Disk Date = 3448467730
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349,683,1,0,"
 
 [File 0013]
-Path Line0001 = "/c/Users/CIDESI/Desktop/Sincros_2013/Negocio/Entrenamiento/ENT_CargaInformacion."
-Path Line0002 = "c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/Entrenam"
+Path Line0002 = "iento/ENT_CargaInformacion.c"
 File Type = "CSource"
-Disk Date = 3449668669
+Disk Date = 3449668670
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
 Source Window State = "1,25,25,25,13,33,33,0,0,0,0,0,0,1,0,0,0,0,18,50,349,683,1,12,"
 
 [File 0014]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/Negocio/Entrenamiento/ENT_Funciones.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/Entrenam"
+Path Line0002 = "iento/ENT_Funciones.h"
 File Type = "Include"
-Disk Date = 3461844214
+Disk Date = 3461844216
 In Projects = "1,"
 Window Top = 242
 Window Left = 122
 Source Window State = "1,27,27,27,68,72,72,0,0,0,0,0,0,0,0,0,0,0,27,71,349,683,1,0,"
 
 [File 0015]
-Path Line0001 = "/c/Program Files (x86)/National Instruments/NI-Motion/FlexMotion/lib/Microsoft/F"
-Path Line0002 = "lexMS32.lib"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Program Files (x86)/National Instruments/NI-Motion/"
+Path Line0002 = "FlexMotion/lib/Microsoft/FlexMS32.lib"
 File Type = "Library"
-Disk Date = 3328085826
+Disk Date = 0
 In Projects = "1,"
 
 [File 0016]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/GRA_Generales/GRA_AjusteGrafico.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/GRA_Generales/GR"
+Path Line0002 = "A_AjusteGrafico.c"
 File Type = "CSource"
-Disk Date = 3462446228
+Disk Date = 3462446230
 In Projects = "1,"
 Window Top = 332
 Window Left = 170
 Source Window State = "1,362,462,362,1,4,1,0,0,0,0,0,0,0,0,0,102,0,128,0,349,683,1,0,"
 
 [File 0017]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/GRA_Generales/GRA_Generales.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/GRA_Generales/GR"
+Path Line0002 = "A_Generales.c"
 File Type = "CSource"
-Disk Date = 3449667336
+Disk Date = 3449667338
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
 Source Window State = "1,256,256,256,0,39,0,0,3,0,0,0,0,0,0,0,247,0,256,39,349,683,1,0,"
 
 [File 0018]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/MON_Monitoreo/MON_Monitoreo.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/MON_Monitoreo/MO"
+Path Line0002 = "N_Monitoreo.c"
 File Type = "CSource"
-Disk Date = 3449752889
+Disk Date = 3449752890
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
 Source Window State = "1,22,22,22,4,23,23,0,0,0,0,7,0,7,0,0,18,0,60,4,323,683,1,0,"
 
 [File 0019]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/MOT_Motores/MOT_Motores.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/MOT_Motores/MOT_"
+Path Line0002 = "Motores.c"
 File Type = "CSource"
-Disk Date = 3461846332
+Disk Date = 3461846334
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
 Source Window State = "1,60,60,60,4,21,21,0,0,0,0,2,0,2,0,0,86,0,103,51,323,683,1,0,"
 
 [File 0020]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/MOV_Movimiento/mov_Movimiento.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/MOV_Movimiento/m"
+Path Line0002 = "ov_Movimiento.c"
 File Type = "CSource"
-Disk Date = 3462446356
+Disk Date = 3462446358
 In Projects = "1,"
 Window Top = 482
 Window Left = 250
 Source Window State = "1,48,49,49,0,0,0,0,0,0,0,0,0,0,0,0,24,0,46,42,349,683,1,0,"
 
 [File 0021]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/MOV_Movimiento/mov_Movimiento.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/MOV_Movimiento/m"
+Path Line0002 = "ov_Movimiento.h"
 File Type = "Include"
-Disk Date = 3449236281
+Disk Date = 3449236282
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,68,0,0,0,349,683,1,0,"
 
 [File 0022]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PAT_Rutas/PAT_Movimientos.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PAT_Rutas/PAT_Mo"
+Path Line0002 = "vimientos.c"
 File Type = "CSource"
-Disk Date = 3462446811
+Disk Date = 3462446812
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
 Source Window State = "1,401,401,401,4,29,29,0,0,0,0,3,0,3,0,0,69,0,102,44,349,683,1,0,"
 
 [File 0023]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PAT_Rutas/PAT_PatronesMovimiento.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PAT_Rutas/PAT_Pa"
+Path Line0002 = "tronesMovimiento.c"
 File Type = "CSource"
-Disk Date = 3462446513
+Disk Date = 3462446514
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Source Window State = "1,126,126,126,6,33,33,0,0,0,0,0,0,0,0,0,55,0,55,0,349,683,1,0,"
 
 [File 0024]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_AjustesControles.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_AjustesControles.c"
 File Type = "CSource"
-Disk Date = 3449244860
+Disk Date = 3449244862
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Source Window State = "1,51,51,51,19,21,21,0,0,0,0,44,0,1,0,0,0,0,0,0,349,683,1,0,"
 
 [File 0025]
-Path Line0001 = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_EventosCatTransmisione"
-Path Line0002 = "s.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_EventosCatTransmisiones.c"
 File Type = "CSource"
-Disk Date = 3449235095
+Disk Date = 3449235096
 In Projects = "1,"
 Window Top = 302
 Window Left = 154
 Source Window State = "1,43,43,43,12,36,12,0,0,0,0,0,0,1,0,0,2,0,12,18,349,683,1,10,"
 
 [File 0026]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_EventosMenuPrincipal.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_EventosMenuPrincipal.c"
 File Type = "CSource"
-Disk Date = 3449482525
+Disk Date = 3449482526
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Source Window State = "1,43,44,43,16,57,16,0,0,0,0,51,0,51,0,0,1,0,42,31,349,683,1,0,"
 
 [File 0027]
-Path Line0001 = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_EventosPantallaPrincip"
-Path Line0002 = "al.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_EventosPantallaPrincipal.c"
 File Type = "CSource"
-Disk Date = 3449743090
+Disk Date = 3449743092
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
 Source Window State = "1,41,41,41,16,28,28,0,0,0,0,2,0,29,0,0,0,0,21,26,349,683,1,10,"
 
 [File 0028]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_Generales.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_Generales.c"
 File Type = "CSource"
-Disk Date = 3449235166
+Disk Date = 3449235168
 In Projects = "1,"
 Window Top = 392
 Window Left = 202
 Source Window State = "1,50,50,50,4,17,17,0,3,0,0,1,0,2,0,0,0,0,50,4,349,683,1,10,"
 
 [File 0029]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_Inicializar.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_Inicializar.c"
 File Type = "CSource"
-Disk Date = 3462451655
+Disk Date = 3462451656
 In Projects = "1,"
 Window Top = 452
 Window Left = 234
 Source Window State = "1,14,14,14,4,26,26,0,3,0,0,1,0,1,0,0,19,0,14,4,349,683,1,0,"
 
 [File 0030]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_MensajeControles.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_MensajeControles.c"
 File Type = "CSource"
-Disk Date = 3449232011
+Disk Date = 3449232012
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Source Window State = "1,135,135,168,17,32,130,0,0,0,0,0,0,1,0,0,0,0,82,50,349,683,1,10,"
 
 [File 0031]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_PantallaPrincipal.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_PantallaPrincipal.c"
 File Type = "CSource"
-Disk Date = 3462446896
+Disk Date = 3462446898
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
 Source Window State = "1,135,135,135,4,26,26,0,0,0,0,6,0,1,0,0,0,0,10,24,349,683,1,10,"
 
 [File 0032]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_Principal.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_Principal.c"
 File Type = "CSource"
-Disk Date = 3449490991
+Disk Date = 3472142205
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,27,27,27,21,22,21,0,0,0,0,0,0,1,0,0,0,0,15,19,349,683,1,10,"
+Source Window State = "1,27,27,27,21,22,21,0,0,113,0,0,0,1,0,34,0,0,5,26,349,683,1,10,"
 
 [File 0033]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_Principal.uir"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_Principal.uir"
 File Type = "User Interface Resource"
-Disk Date = 3470162927
+Disk Date = 3470162928
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
@@ -338,27 +364,30 @@ Window Height = 349
 Window Width = 683
 
 [File 0034]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_Tipos.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_Tipos.h"
 File Type = "Include"
-Disk Date = 3462451106
+Disk Date = 3462451108
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
 Source Window State = "1,10,10,10,8,19,19,0,0,0,0,0,0,0,0,0,84,0,108,10,349,683,1,0,"
 
 [File 0035]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PRE_Presentacion/PRE_Variables.h"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
+Path Line0002 = "/PRE_Variables.h"
 File Type = "Include"
-Disk Date = 3462446656
+Disk Date = 3462446658
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
 Source Window State = "1,36,36,36,9,16,16,0,0,0,0,0,0,0,0,0,0,0,24,18,349,683,1,10,"
 
 [File 0036]
-Path = "/c/Users/CIDESI/Desktop/Sincros_2013/PAT_Rutas/UTL_Utilerias.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PAT_Rutas/UTL_Ut"
+Path Line0002 = "ilerias.c"
 File Type = "CSource"
-Disk Date = 3449593589
+Disk Date = 3449593590
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
