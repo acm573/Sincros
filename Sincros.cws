@@ -13,10 +13,10 @@ Number of Projects = 1
 Active Project = 1
 Project 0001 = "Sincros.prj"
 Drag Bar Left = 259
-Window Top = 35
+Window Top = 107
 Window Left = 12
 Window Bottom = 738
-Window Right = 1053
+Window Right = 1243
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -109,11 +109,11 @@ Source Window State = "1,6,6,6,4,25,25,0,0,0,0,1,0,1,0,0,0,0,16,4,349,683,1,0,"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/GRA_Generales/CA"
 Path Line0002 = "N_DespliegaInformacion.c"
 File Type = "CSource"
-Disk Date = 3449750230
+Disk Date = 3472237589
 In Projects = "1,"
 Window Top = 302
 Window Left = 154
-Source Window State = "1,131,143,131,0,0,0,0,0,0,0,0,0,0,0,0,105,0,126,43,349,683,1,0,"
+Source Window State = "1,19,19,19,19,20,19,0,0,80,0,0,0,0,0,25,0,0,137,30,349,683,1,0,"
 
 [File 0009]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/COM_Comunicacion"
@@ -123,7 +123,7 @@ Disk Date = 3472223371
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,44,45,45,75,74,74,0,0,68,0,0,0,0,0,14,18,0,35,11,206,587,1,0,"
+Source Window State = "1,44,45,45,75,74,74,0,0,0,0,0,0,0,0,0,18,0,35,11,206,587,1,0,"
 
 [File 0010]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/COM_Comunicacion"
@@ -266,11 +266,11 @@ Source Window State = "1,126,126,126,6,33,33,0,0,0,0,0,0,0,0,0,55,0,55,0,349,683
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_AjustesControles.c"
 File Type = "CSource"
-Disk Date = 3449244862
+Disk Date = 3472238247
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,51,51,51,19,21,21,0,0,0,0,44,0,1,0,0,0,0,0,0,349,683,1,0,"
+Source Window State = "1,0,13,0,0,0,0,0,0,80,0,57,0,14,0,25,0,0,11,31,349,683,1,0,"
 
 [File 0025]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -336,21 +336,21 @@ Source Window State = "1,135,135,168,17,32,130,0,0,0,0,0,0,1,0,0,0,0,82,50,349,6
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_PantallaPrincipal.c"
 File Type = "CSource"
-Disk Date = 3462446898
+Disk Date = 3472237347
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Source Window State = "1,135,135,135,4,26,26,0,0,0,0,6,0,1,0,0,0,0,10,24,349,683,1,10,"
+Source Window State = "1,20,30,20,0,79,0,0,3,80,0,13,0,14,0,25,6,0,30,79,349,683,1,19,"
 
 [File 0032]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_Principal.c"
 File Type = "CSource"
-Disk Date = 3472223809
+Disk Date = 3472236883
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,27,27,27,21,22,21,0,0,80,0,0,0,1,0,25,61,0,82,38,349,683,1,10,"
+Source Window State = "1,0,14,0,0,0,0,0,3,117,0,14,0,15,0,33,0,0,14,0,349,683,1,10,"
 
 [File 0033]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -377,11 +377,11 @@ Source Window State = "1,10,10,10,8,19,19,0,0,0,0,0,0,0,0,0,84,0,108,10,349,683,
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_Variables.h"
 File Type = "Include"
-Disk Date = 3462446658
+Disk Date = 3472239885
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,36,36,36,9,16,16,0,0,0,0,0,0,0,0,0,0,0,24,18,349,683,1,10,"
+Source Window State = "1,0,13,0,0,0,0,0,0,80,0,0,0,0,0,25,0,0,5,39,349,683,1,10,"
 
 [File 0036]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PAT_Rutas/UTL_Ut"

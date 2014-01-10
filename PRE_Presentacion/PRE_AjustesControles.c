@@ -1,10 +1,35 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_AjustesControles.c
+. Propósito:				Contiene las funciones que permiten controlar el
+.							aspecto y animaciones de la interfaz de usuario.
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include "toolbox.h"
 #include "pre_variables.h"
 
 
+//variable global
 int iPanelVisible=0;
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_PanelVisible
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Controla el estado de visibilidad del panel pasado
+.						por valor.
+. Parámetro de entrada:	int iPanel | referencia al panel a operar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_PanelVisible(int iPanel)
 {
 	int iValor=0;
@@ -20,10 +45,18 @@ int PRE_PanelVisible(int iPanel)
 
 
 
-/*
- * Despliega un panel en pantalla considerando las condiciones de la misma como lo es
- * la posicion del panel anterior y si existe el menu desplegado
- */
+/*****************************************************************************
+.
+. Función C:			PRE_UbicarPanel
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Despliega un panel en pantalla considerando las 
+.						condiciones de la misma como lo es la posicion del
+.						panel anterior y si existe el menu desplegado.
+. Parámetro de entrada:	int iPanel | referencia al panel a operar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_UbicarPanel(int iPanel)
 {
 	int iBarra=0;
@@ -33,7 +66,6 @@ int PRE_UbicarPanel(int iPanel)
 	int iLeftPanelExiste=0;
 	static int iPanelAnterior=0;
 	
-
 	if (iPanel!=0)
 	{
 		if (iPanelAnterior != 0)
@@ -86,7 +118,6 @@ int PRE_UbicarPanel(int iPanel)
 	
 		iPanelAnterior = iPanel;
 	}
-	
 	return 0;
 }
 

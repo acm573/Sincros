@@ -1,3 +1,16 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_AjustesControles.c
+. Propósito:				Contiene las funciones que permiten controlar el
+.							aspecto y animaciones de la interfaz de usuario.
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #ifndef __PRE_Principal__
 #define __PRE_Principal__
 

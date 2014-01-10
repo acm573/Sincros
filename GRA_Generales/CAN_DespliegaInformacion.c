@@ -1,28 +1,24 @@
 /******************************************************************************
 .
 . Centro de Ingeniería y Desarrollo Indusrial
-. Nombre del Aplicativo:	Módulo que controla el desplegado de información
-.							en el canvas de la aplicación
 . Archivo:					CAN_DespliegaInformacion.c
 . Propósito:				Contiene las funciones que se encargan de desplegar
 .							cada uno de los diferentes tipos de información
 .							sobre el canvas de trabajo
-. Lenguaje:					LabWindows/CVI 10.0.1 (434)
+. Lenguaje:					LabWindows/CVI 13.0.0 (434)
 . Autor:					Cesar Armando Cruz Mendoza
 . Historia
 . Fecha de Creación:		18 de Febrero de 2013
 . Responsable modificación: 
 .
 *******************************************************************************/
-
-//include
 #include "toolbox.h"
 #include <userint.h>
 
 
 //Variables gloables locales
-int iPanelCanvas=0;
-int iControlCanvas=0;
+int iPanelCanvas=0;		//referencia al panel donde se encuentra en canvas
+int iControlCanvas=0;	//referencia al control del canvas											
 
 
 
@@ -87,12 +83,23 @@ int CAN_DibujarMarca(int x, int y, int color)
     VAL_DK_GRAY
     VAL_WHITE
 */
-	
 	return 0;
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			CAN_DibujarMarcaRecorrido
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Dibuja las marcas a lo largo de un recorrido generado
+.						por el sistema manipulador.
+. Parámetro de entrada:	int x | coordenada x de la marca
+.						int y | coordenada y de la marca
+.						int color | numero entero referente al color asociado
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CAN_DibujarMarcaRecorrido(int x, int y, int color)
 {
 	SetCtrlAttribute (iPanelCanvas, iControlCanvas, ATTR_PEN_FILL_COLOR,
@@ -123,7 +130,6 @@ int CAN_DibujarMarcaRecorrido(int x, int y, int color)
     VAL_DK_GRAY
     VAL_WHITE
 */
-	
 	return 0;
 }
 

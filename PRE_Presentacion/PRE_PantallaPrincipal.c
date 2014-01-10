@@ -1,3 +1,16 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_PantallaPrincipal.c
+. Propósito:				Contiene las funciones que permiten controlar el
+.							aspecto y animaciones de la interfaz de usuario.
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include "PRE_Principal.h"
 #include <userint.h>
 #include "toolbox.h"
@@ -5,7 +18,17 @@
 
 
 
-//int PRE_AnimacionMenu(int inicio, int fin)
+/*****************************************************************************
+.
+. Función C:			PRE_AnimacionMenu
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Implementa el proceso de animación de la barra 
+.						lateral del menu principal del sistema.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_AnimacionMenu(stMenuAcciones Accion)
 {
 	int iExistePanel=0;
@@ -109,6 +132,17 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_ConfiguraMenu
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Se encarga de configurar el aspecto del menu de
+.						opciones principal del sistema.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_ConfiguraMenu()
 {
 	int iAlto=0;
@@ -132,7 +166,19 @@ int PRE_ConfiguraMenu()
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			PRE_AjustarComponentes
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Se encarga de configurar la apariencia de los 
+.						elementos en la interfaz de usuario, utilizando como
+.						ayuda el parametro de entrada iDato
+. Parámetro de entrada:	int iDato | Es el evento que se generó y sobre el 
+.									cual se debe operar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_AjustarComponentes(int iDato)
 {
 	//Toma el ancho de la ventana
@@ -268,7 +314,17 @@ int PRE_AjustarComponentes(int iDato)
 
 
 
-
+/*****************************************************************************
+.
+. Función C:			PRE_InicializarInterfaz
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Establece la configuración de inicio de la interfaz
+.						de usuario de la aplicación
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_InicializarInterfaz()
 {
 	PRE_AjustarComponentes(0);

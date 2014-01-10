@@ -1,15 +1,39 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_Principal.c
+. Propósito:				Es el punto de entrada a la aplicación. Desde aqui
+.							se gestiona el lanzamiento de la pantalla principal
+.							de la aplicacion de control del sistema manipulador.
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include <cvirte.h>		
 #include <userint.h>
 #include "pre_variables.h"
 
 
-//aqui van los comentarios
-//nuevo comentario desde el sitio web
-lkjkjljljljklj
-
+/*****************************************************************************
+.
+. Función C:			main
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Función de entrada para iniciar el sistema de control.
+.						Establece la secuencia de las llamadas a las funciones
+.						que configuran y establecen las condiciones de inicio
+.						del sistema de control de manipulador.
+. Parámetro de entrada:	int argc | numero de parametros
+.						char *argv[] | arreglo con los parametros
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int main (int argc, char *argv[])
 {
-	//carga las referencias de todos los paneles
+	//inicializalas referencias de todos los paneles
 	
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
@@ -25,7 +49,10 @@ int main (int argc, char *argv[])
 	if ((iPanelEntrenamiento= LoadPanel (iPanelPrincipal, "PRE_Principal.uir", pEntrenar)) < 0)
 		return -1;
 	
+	//inicializa la interfaz de usuario
 	PRE_InicializarInterfaz();
+	
+	//establece las condiciones de inicio
 	PRE_InicializarSistema();
 	
 	DisplayPanel (iPanelPrincipal);
@@ -72,7 +99,7 @@ int CVICALLBACK PRE_MostrarMenu (int panel, int control, int event,
 			break;
 			
 		case EVENT_MOUSE_POINTER_MOVE:
-			PRE_BarraEstado("Despliega el menï¿½ principal del sistema.");
+			PRE_BarraEstado("Despliega el menú principal del sistema.");
 			break;
 	}
 	return 0;
@@ -82,8 +109,8 @@ int CVICALLBACK PRE_MostrarMenu (int panel, int control, int event,
 
 int PRE_FinalizarAplicacion()
 {
-	if (ConfirmPopup ("Finalizar sesiï¿½n con el sistema",
-				  "ï¿½Desea cerrar la aplicaciï¿½n?")==1)
+	if (ConfirmPopup ("Finalizar sesión con el sistema",
+				  "¿Desea cerrar la aplicación?")==1)
 	{
 		PRE_Finalizar();
 		QuitUserInterface (0);	
