@@ -30,7 +30,7 @@ int CVICALLBACK COM_EnviarComandos (int reserved, int timerId, int event, void *
 int COM_IniciaAplicacion()
 {
 	if ((iPanelMonitor = LoadPanel (0,
-									"c:\\Users\\CIDESI\\Desktop\\Sincros\\COM_Comunicacion\\COM_Monitor.uir",
+									"COM_Comunicacion\\COM_Monitor.uir",
 									P_MONITOR)) < 0)
 		return -1;
 	
