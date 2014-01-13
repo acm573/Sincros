@@ -63,7 +63,17 @@ int main (int argc, char *argv[])
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			PRE_Principal
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Función que captura los eventos en el panel principal
+.						de la aplicación del sistema
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_Principal (int panel, int event, void *callbackData,
 		int eventData1, int eventData2)
 {
@@ -88,7 +98,17 @@ int CVICALLBACK PRE_Principal (int panel, int event, void *callbackData,
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			PRE_MostrarMenu
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Función que captura los eventos sobre el botón del
+.						menu principal de la aplicación.
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_MostrarMenu (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -107,6 +127,17 @@ int CVICALLBACK PRE_MostrarMenu (int panel, int control, int event,
 
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_FinalizarAplicacion
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Función que captura la solicitud de cerrar la 
+.						aplicación del sistema de control.
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_FinalizarAplicacion()
 {
 	if (ConfirmPopup ("Finalizar sesión con el sistema",
@@ -114,7 +145,6 @@ int PRE_FinalizarAplicacion()
 	{
 		PRE_Finalizar();
 		QuitUserInterface (0);	
-		
 	}   
 	return 0;
 }

@@ -1,13 +1,31 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_EventosMenuPrincipal.c
+. Propósito:				Administra los mensajes de ayuda que se despliegan
+.							en la pantalla 
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include "toolbox.h"
 #include "pre_variables.h"
 
 
-
-
-/* 
- * Captura los eventos registrados sobre los controles del panel iPanelMenuPrincipal
- */
-
+/*****************************************************************************
+.
+. Función C:			PRE_SeleccionMenu
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura los eventos registrados sobre los controles
+.						del panel iPanelMenuPrincipal
+. Parámetro de entrada:	los de una funcion callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_SeleccionMenu (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -44,7 +62,6 @@ int CVICALLBACK PRE_SeleccionMenu (int panel, int control, int event,
 			}
 			break;
 	}
-	
 	return 0;
 }
 

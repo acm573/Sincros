@@ -18,8 +18,6 @@
 #include "pre_tipos.h"
 
 
-
-
 //prototipo de funciones
 int PRE_InicializarInterfaz(void);
 int PRE_AjustarComponentes(int iDato);

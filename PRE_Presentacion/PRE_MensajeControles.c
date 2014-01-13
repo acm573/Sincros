@@ -1,17 +1,40 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_MensajeControles.c
+. Propósito:				Administra los mensajes de ayuda que se despliegan
+.							en la pantalla 
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include <ansi_c.h>
 #include "pre_variables.h"
 
 
 
+/*****************************************************************************
+.
+. Función C:			PRI_MensajeControl
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Carga la cadena de texto de ayuda, de acuerdo al 
+.						panel y control sobre el que se encuentra el cursor.
+. Parámetro de entrada:	int iPanel | referencia al panel
+.						int iControl | referencia al control
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRI_MensajeControl(int iPanel, int iControl)
 {
 	char *pcMensaje="";
 	
-	
 	/*
 	 * Mensajes para los elementos del panel iPanelMenuPrincipal
 	 */
-	
 	if (iPanel == iPanelMenuPrincipal)
 	{
 		switch (iControl)
@@ -51,7 +74,6 @@ int PRI_MensajeControl(int iPanel, int iControl)
 			case pMenu_picSalir:
 				pcMensaje = "Finaliza la sesión con el sistema.";
 				break;
-			
 		}
 	}
 	
@@ -112,13 +134,11 @@ int PRI_MensajeControl(int iPanel, int iControl)
 			case pCatTransm_numNumeroVelocidades:
 				pcMensaje = "Indica el número de velocidades disponibles en la transmisión seleccionada. El numero de velocidades no incluye la reversa";
 				break;
-			
-			
 		}
 	}
 	
 	
-		/*
+	/*
 	 * Mensajes para los elementos del panel iPanelEntrenamiento
 	 */
 	if (iPanel == iPanelEntrenamiento)
@@ -148,21 +168,27 @@ int PRI_MensajeControl(int iPanel, int iControl)
 			case pEntrenar_tblEntrenamiento:
 				pcMensaje = "Despliega los puntos que se han entrenado para la transmisión actual.";
 				break;
-				
-			
 		}
 	}
 	
 	PRE_BarraEstado(strlen(pcMensaje)>0?pcMensaje:"");
-		
 	return 0;
 }
 
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_BarraEstado
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Coloca el mensaje solicitado en la barra de mensajes
+. Parámetro de entrada:	char *pcCadena | mensaje de texto que se colocará
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_BarraEstado(char *pcCadena)
 {
 	SetCtrlVal (iPanelPrincipal, pPrincipal_txtEstado, pcCadena);
-	
 	return 0;
 }

@@ -17,14 +17,14 @@
 #include "pre_variables.h"
 
 
-
 /*****************************************************************************
 .
 . Función C:			PRE_AnimacionMenu
 . Responsable:			César Armando Cruz Mendoza
 . Descripcion: 			Implementa el proceso de animación de la barra 
 .						lateral del menu principal del sistema.
-. Parámetro de entrada:	ninguno
+. Parámetro de entrada:	stMenuAcciones Accion | define la acción que se debe
+.												ejecutar sobre el menu
 . Parámetro de salida:	cero
 . Fecha de creación:	18 de Febrero de 2011
 .
@@ -51,7 +51,6 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 
 	if (iExistePanel==1)
 	{
-		
 		if (inicio<fin)
 		{	
 			if (PRE_PanelVisible(0)!=0)
@@ -72,10 +71,8 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 					SetPanelAttribute (PRE_PanelVisible(0), ATTR_LEFT, iLeftPanel);
 				}
 
-				
 				inicio+=PASO_ANIMACION;
 				ProcessSystemEvents();
-				
 			}
 		
 			SetCtrlAttribute (iPanelPrincipal, pPrincipal_txtEstado, ATTR_LEFT, ANCHO_MENU);
@@ -88,7 +85,6 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 		}
 		else
 		{
-		
 			if (PRE_PanelVisible(0)!=0)
 			{
 				GetPanelAttribute (PRE_PanelVisible(0), ATTR_LEFT, &iLeftPanel);
@@ -109,7 +105,6 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 				}
 				
 				inicio-=PASO_ANIMACION;
-		
 				ProcessSystemEvents();
 			}
 		 
@@ -122,7 +117,6 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 			HidePanel(iPanelMenuPrincipal);
 		}
 	}
-	
 	//Ahora verifica si existe un panel visible en este momento
 	PRE_UbicarPanel(PRE_PanelVisible(0));
 	PRE_BarraEstado("");
@@ -328,7 +322,6 @@ int PRE_AjustarComponentes(int iDato)
 int PRE_InicializarInterfaz()
 {
 	PRE_AjustarComponentes(0);
-	
 	return 0;
 }
 

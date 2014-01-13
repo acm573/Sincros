@@ -1,7 +1,21 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_MensajeControles.c
+. Propósito:				Administra los mensajes de ayuda que se despliegan
+.							en la pantalla 
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include "mov_movimiento.h"
 #include "com_comunicacion.h"
 #include "pre_variables.h"
 #include <formatio.h>
+
 
 //prototipo de funciones
 int MOT_CondicionesIniciales(void);
@@ -12,6 +26,18 @@ int MOT_EstadoMotores(stMotores Modo);
 int DIG_CrearTarea(int ipanel, int icontrol);
 int DIG_EstadoEntrada(int iEntrada);
 
+
+/*****************************************************************************
+.
+. Función C:			PRE_InicializarSistema
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Ejecuta la secuencia que establece las condiciones de
+.						operación iniciales del sistema de control
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_InicializarSistema()
 {
 	Fmt(MistPosicion.cDescripcion,"%s<%s","");
@@ -63,7 +89,17 @@ int PRE_InicializarSistema()
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			PRE_Finalizar
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Ejecuta la secuencia que establece las condiciones de
+.						operación iniciales del sistema de control
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_Finalizar()
 {
 	MON_FinMonitoreo();

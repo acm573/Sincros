@@ -44,7 +44,6 @@ int PRE_PanelVisible(int iPanel)
 }
 
 
-
 /*****************************************************************************
 .
 . Función C:			PRE_UbicarPanel
@@ -89,7 +88,6 @@ int PRE_UbicarPanel(int iPanel)
 		
 			HidePanel(iPanelAnterior);
 		}
-	
 	
 		GetPanelAttribute(iPanelMenuPrincipal, ATTR_VISIBLE, &iExistePanel);
 		if (iExistePanel==1)
