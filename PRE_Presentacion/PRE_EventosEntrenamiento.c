@@ -1,3 +1,16 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					PRE_EventosEntremiento.c
+. Propósito:				Contiene las funciones que antienden los diferentes
+.							eventos del proceso de entrenamiento
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		18 de Febrero de 2013
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include <userint.h>
 #include "PRE_Principal.h"
 #include <formatio.h>

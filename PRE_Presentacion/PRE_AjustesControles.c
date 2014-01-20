@@ -113,7 +113,6 @@ int PRE_UbicarPanel(int iPanel)
 			DisplayPanel(iPanel);
 			iPanelVisible = iPanel;
 		}
-	
 		iPanelAnterior = iPanel;
 	}
 	return 0;
