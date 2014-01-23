@@ -13,10 +13,10 @@ Number of Projects = 1
 Active Project = 1
 Project 0001 = "Sincros.prj"
 Drag Bar Left = 259
-Window Top = 299
-Window Left = 1355
-Window Bottom = 1038
-Window Right = 2787
+Window Top = 193
+Window Left = 1274
+Window Bottom = 932
+Window Right = 2706
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -30,7 +30,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 0
+Number of Opened Files = 1
 Window Confinement Region Enabled = True
 MainColumnWidth = 242
 FileDateColumnWidth = 70
@@ -71,7 +71,7 @@ Disk Date = 3473105858
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
-Source Window State = "1,4,5,4,28,76,28,0,0,142,0,13,0,15,0,49,24,0,31,29,349,683,1,15,"
+Source Window State = "1,4,5,4,28,76,28,0,0,0,0,13,0,15,0,0,24,0,31,29,349,683,1,15,"
 Line Tags = "640,995,1054,1154,"
 
 [File 0005]
@@ -270,7 +270,7 @@ Disk Date = 3473105581
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,21,32,21,0,0,0,0,0,142,0,57,0,14,0,49,0,0,114,9,349,683,1,0,"
+Source Window State = "1,21,32,21,0,0,0,0,0,0,0,57,0,14,0,0,0,0,114,9,349,683,1,0,"
 
 [File 0025]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -280,7 +280,7 @@ Disk Date = 3473105682
 In Projects = "1,"
 Window Top = 302
 Window Left = 154
-Source Window State = "1,0,13,0,0,0,0,0,3,80,0,13,0,14,0,25,0,0,13,0,349,683,1,10,"
+Source Window State = "1,0,13,0,0,0,0,0,3,0,0,13,0,14,0,0,0,0,13,0,349,683,1,10,"
 
 [File 0026]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -336,11 +336,12 @@ Source Window State = "1,184,184,184,24,31,31,0,0,0,0,13,0,14,0,0,156,0,184,73,3
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_PantallaPrincipal.c"
 File Type = "CSource"
-Disk Date = 3472482896
+Disk Date = 3473340514
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Source Window State = "1,106,107,106,18,20,18,0,0,0,0,13,0,14,0,0,102,0,118,5,349,683,1,19,"
+Window Z-Order = 1
+Source Window State = "1,45,45,45,8,24,8,0,0,142,0,13,0,14,0,47,12,0,48,8,349,683,1,19,"
 
 [File 0032]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
