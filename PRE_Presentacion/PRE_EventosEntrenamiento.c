@@ -117,10 +117,17 @@ int ENT_DetallePosiciones()
 }
 
 
-
-/* 
- * Captura los eventos registrados sobre los controles del panel iPanelEntrenamiento
- */
+/*****************************************************************************
+.
+. Función C:			PRE_SeleccionEntrenamiento
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura los eventos registrados sobre los controles
+.						que integran la interfaz de entrenamiento
+. Parámetro de entrada:	los de una funcion callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_SeleccionEntrenamiento (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -174,10 +181,8 @@ int CVICALLBACK PRE_SeleccionEntrenamiento (int panel, int control, int event,
 			case pEntrenar_picCerrar:
 				PRE_OcultarPanel(panel);
 				break;
-			
 		}
 	}
-	
 	
 	if (event == EVENT_VAL_CHANGED)
 	{
@@ -205,9 +210,18 @@ int CVICALLBACK PRE_SeleccionEntrenamiento (int panel, int control, int event,
 
 
 
-/*
- * Establece las condiciones iniciales del panel iPanelEntrenamiento
- */
+/*****************************************************************************
+.
+. Función C:			PRE_ControlesEntrenamiento
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Define el aspecto de la pantalla para cada caso o
+.						función en la que se encuentra el usuario dentro del
+.						proceso de entrenamiento.
+. Parámetro de entrada:	stEntrenar Modo | Indica el modo que se desea habilitar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_ControlesEntrenamiento(stEntrenar Modo)
 {
 	switch (Modo)
@@ -275,13 +289,12 @@ int PRE_ControlesEntrenamiento(stEntrenar Modo)
 			//restablece el boton del menu
 			GRA_PanelModal(iPanelMenuPrincipal);
 			GRA_Dimmed(pPrincipal_btnMenu, FALSE);
-			
 			break;
 			
 		case  CTRL_NUEVO_ENTRENAMIENTO:
 			
 			GRA_PanelModal(iPanelEntrenamiento);
-			
+		
 			//DEShabilita botones del menu de entrenamiento y la lista de transmisiones
 			GRA_Dimmed(pEntrenar_picNuevo,TRUE);
 			GRA_Dimmed(pEntrenar_picEliminar,TRUE);
@@ -299,7 +312,6 @@ int PRE_ControlesEntrenamiento(stEntrenar Modo)
 			//bloquea el boton del menu
 			GRA_PanelModal(iPanelMenuPrincipal);
 			GRA_Dimmed(pPrincipal_btnMenu, TRUE);
-			
 			break;
 			
 		case CTRL_INICIA_CONFIGURACION:
@@ -320,7 +332,6 @@ int PRE_ControlesEntrenamiento(stEntrenar Modo)
 				GRA_Strcat(2,
 					"\n",
 					"La inicialización de las rutinas de entrenamiento tomará unos segundos, espere por favor..."));
-			
 			break;
 			
 		case CTRL_INICIA_ENTRENAMIENTO:
@@ -332,8 +343,6 @@ int PRE_ControlesEntrenamiento(stEntrenar Modo)
 					"Como primer paso, debe acoplar el sistema manipulador a la palanca de velocidades.\n\n",
 					"Posteriormente, en forma manual deberá posicionar la palanca de velocidades en la velocidad número 1.\n\n",
 					"Finalmente, para que el sistema registre esta posición como referencia, debe pulsar el Botón Número 2."));
-			
-			
 			break;
 			
 			

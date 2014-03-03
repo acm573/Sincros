@@ -67,13 +67,13 @@ In Projects = "1,"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_EventosEntrenamiento.c"
 File Type = "CSource"
-Disk Date = 3476731407
+Disk Date = 3476732045
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
 Window Z-Order = 1
-Source Window State = "1,69,72,69,0,0,0,0,0,117,0,13,0,15,0,35,66,0,75,8,349,683,1,15,"
-Line Tags = "647,1002,1061,1161,"
+Source Window State = "1,219,219,219,24,51,24,0,0,117,0,13,0,15,0,35,209,0,219,79,349,683,1,15,"
+Line Tags = "661,1016,1075,1175,"
 
 [File 0005]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/Entrenam"
