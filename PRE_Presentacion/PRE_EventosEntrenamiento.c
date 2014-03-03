@@ -67,11 +67,20 @@ long maximoLineal=0;
 double dRPMAbb=0.0;
 
 
-
-
 /* 
  * Captura los eventos registrados sobre el panel iPanelEntrenamiento
  */
+/*****************************************************************************
+.
+. Función C:			PRE_PanelEntrenamiento
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura los eventos registrados sobre los controles
+.						del panel iPanelMenuPrincipal
+. Parámetro de entrada:	los de una funcion callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_PanelEntrenamiento (int panel, int event, void *callbackData,
 		int eventData1, int eventData2)
 {

@@ -12,11 +12,11 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Sincros.prj"
-Drag Bar Left = 259
-Window Top = 193
-Window Left = 1274
-Window Bottom = 932
-Window Right = 2706
+Drag Bar Left = 258
+Window Top = 38
+Window Left = 58
+Window Bottom = 703
+Window Right = 1200
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 1
 Window Confinement Region Enabled = True
-MainColumnWidth = 242
+MainColumnWidth = 241
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -67,12 +67,13 @@ In Projects = "1,"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_EventosEntrenamiento.c"
 File Type = "CSource"
-Disk Date = 3473105858
+Disk Date = 3476730977
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
-Source Window State = "1,4,5,4,28,76,28,0,0,0,0,13,0,15,0,0,24,0,31,29,349,683,1,15,"
-Line Tags = "640,995,1054,1154,"
+Window Z-Order = 1
+Source Window State = "1,4,5,1287,28,76,18,0,0,106,0,13,0,15,0,42,54,0,67,0,349,683,1,15,"
+Line Tags = "649,1004,1063,1163,"
 
 [File 0005]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/Entrenam"
@@ -290,7 +291,7 @@ Disk Date = 3472483373
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,17,27,17,0,78,0,0,3,0,0,4,0,68,0,0,0,0,27,78,349,683,1,19,"
+Source Window State = "1,17,28,17,0,0,0,0,3,0,0,4,0,68,0,0,0,0,28,0,349,683,1,19,"
 
 [File 0027]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -300,7 +301,7 @@ Disk Date = 3472496446
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
-Source Window State = "1,18,20,18,30,51,30,0,0,0,0,20,0,47,0,0,0,0,12,50,349,683,1,10,"
+Source Window State = "1,18,20,18,30,51,30,0,0,0,0,20,0,47,0,0,55,0,16,31,349,683,1,10,"
 
 [File 0028]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -310,7 +311,7 @@ Disk Date = 3472495927
 In Projects = "1,"
 Window Top = 392
 Window Left = 202
-Source Window State = "1,94,95,94,24,53,24,0,0,0,0,14,0,15,0,0,76,0,103,33,349,683,1,10,"
+Source Window State = "1,94,95,94,24,53,24,0,0,0,0,14,0,15,0,0,41,0,90,22,349,683,1,10,"
 
 [File 0029]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -320,7 +321,7 @@ Disk Date = 3472481720
 In Projects = "1,"
 Window Top = 452
 Window Left = 234
-Source Window State = "1,29,40,29,0,0,0,0,0,0,0,6,0,14,0,0,72,0,20,43,349,683,1,0,"
+Source Window State = "1,29,40,29,0,0,0,0,0,0,0,6,0,14,0,0,0,0,20,43,349,683,1,0,"
 
 [File 0030]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -330,7 +331,7 @@ Disk Date = 3472482658
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,184,184,184,24,31,31,0,0,0,0,13,0,14,0,0,156,0,184,73,349,683,1,10,"
+Source Window State = "1,184,184,184,24,31,31,0,0,0,0,13,0,14,0,0,159,0,166,4,349,683,1,10,"
 
 [File 0031]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -340,18 +341,17 @@ Disk Date = 3473340514
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Window Z-Order = 1
-Source Window State = "1,45,45,45,8,24,8,0,0,142,0,13,0,14,0,47,12,0,48,8,349,683,1,19,"
+Source Window State = "1,45,45,45,8,24,8,0,0,0,0,13,0,14,0,0,12,0,35,84,349,683,1,19,"
 
 [File 0032]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_Principal.c"
 File Type = "CSource"
-Disk Date = 3472479347
+Disk Date = 3474052743
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,99,99,99,15,17,15,0,0,0,0,14,0,15,0,0,116,0,11,22,349,683,1,10,"
+Source Window State = "1,141,145,84,25,25,4,0,0,0,0,14,0,15,0,0,108,0,125,28,349,683,1,10,"
 
 [File 0033]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"

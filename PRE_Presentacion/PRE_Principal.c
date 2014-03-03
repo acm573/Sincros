@@ -82,14 +82,12 @@ int CVICALLBACK PRE_Principal (int panel, int event, void *callbackData,
 		case EVENT_CLOSE:
 			PRE_FinalizarAplicacion();
 			break;
-			
 		case EVENT_PANEL_SIZING:
 			PRE_AjustarComponentes(eventData2);
 			break;
 		case EVENT_PANEL_SIZE:
 			PRE_AjustarComponentes(eventData2);
 			break;
-			
 		case EVENT_LEFT_CLICK:
 			PRE_AnimacionMenu(OCULTAR);
 			break;
