@@ -97,6 +97,16 @@ int CVICALLBACK PRE_PanelEntrenamiento (int panel, int event, void *callbackData
 
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_DetallePosiciones
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Imprime en pantalla el detalle de la posición actual
+. Parámetro de entrada:	los de una funcion callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_DetallePosiciones()
 {
 	stPosicion p;
@@ -455,13 +465,23 @@ int PRE_ControlesEntrenamiento(stEntrenar Modo)
 			GRA_Dimmed(pEntrenar_picDescartarPuntos, FALSE);
 			
 			break;
-
 	}
-	
 	return 0;
 }
 
 
+
+/*****************************************************************************
+.
+. Función C:			PRE_CondicionesIniciales
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Establece las condiciones iniciales al momento de 
+.						ingresar a la modalidad de entrenamiento.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_CondicionesIniciales()
 {
 	int iAlto=0;
@@ -488,6 +508,18 @@ int PRE_CondicionesIniciales()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_IniciarEntrenamiento
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Una vez que el usuario ha solicitado iniciar un nuevo
+.						entrenamiento, se deben establecer algunas condiciones
+.						basicas de inicio.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int PRE_IniciarEntrenamiento()
 {
 	stEntrenar Modo = CTRL_SIN_TRANSMISIONES;
@@ -507,6 +539,17 @@ int PRE_IniciarEntrenamiento()
 
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_EntrenamientiPaso1
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Establece las condiciones iniciales al momento de 
+.						ingresar a la modalidad de entrenamiento.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_EntrenamientoPaso1()
 {
 	PRE_ControlesEntrenamiento(CTRL_INICIA_CONFIGURACION);
@@ -517,7 +560,17 @@ int ENT_EntrenamientoPaso1()
 
 
 
-
+/*****************************************************************************
+.
+. Función C:			ENT_TipoSeleccionado
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Determina del tipo de posición de la palanca
+.						VELOCIDAD, NEUTRAL, REVERSA
+. Parámetro de entrada:	char *pcCadena | nombre de la posición
+. Parámetro de salida:	stTipo | tipo de posición
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 stTipo ENT_TipoSeleccionado(char *pcCadena)
 {
 	stTipo iTipo=VELOCIDAD;
@@ -534,6 +587,18 @@ stTipo ENT_TipoSeleccionado(char *pcCadena)
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_ActualizaDetalle
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Actualiza la información capturada en la tabla de
+.						entrenamiento.
+. Parámetro de entrada:	int iRenglon | posición del renglon
+.						int iColumna | posición de la columna
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ActualizaDetalle(int iRenglon, int iColumna)
 {
 	stPosicion p;
@@ -556,9 +621,18 @@ int ENT_ActualizaDetalle(int iRenglon, int iColumna)
 
 
 
-
-
-
+/*****************************************************************************
+.
+. Función C:			ENT_CargaDetalle
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Actualiza la información en la tabla de entrenamiento
+.						con la información disponible en memoria.
+. Parámetro de entrada:	int iRenglon | posición del renglon
+.						int iColumna | posición de la columna
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_CargaDetalle(int iRenglon, int iColumna)
 {
 	char cTipo[20]={0};
@@ -593,11 +667,22 @@ int ENT_CargaDetalle(int iRenglon, int iColumna)
 			InsertTableCellRingItem(iPanelEntrenamiento, pEntrenar_tblEntrenamiento, MakePoint(3, iRenglon), -1, "R");
 			break;
 	}
-	
-	
 	return 0;
 }
 
+
+/*****************************************************************************
+.
+. Función C:			ENT_CargarTipos
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Actualiza la tabla con una lista que describe el tipo
+.						de elemento de velocidad se trata
+. Parámetro de entrada:	int iRenglon | posición del renglon
+.						int iColumna | posición de la columna
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_CargarTipos(int iRenglon, int iColumna)
 {
 	DeleteTableCellRingItems(iPanelEntrenamiento, pEntrenar_tblEntrenamiento, MakePoint(iColumna, iRenglon), 0, -1);
@@ -605,12 +690,21 @@ int ENT_CargarTipos(int iRenglon, int iColumna)
 	InsertTableCellRingItem(iPanelEntrenamiento, pEntrenar_tblEntrenamiento, MakePoint(iColumna, iRenglon), -1, "Velocidad");
 	InsertTableCellRingItem(iPanelEntrenamiento, pEntrenar_tblEntrenamiento, MakePoint(iColumna, iRenglon), -1, "Neutral");
 	InsertTableCellRingItem(iPanelEntrenamiento, pEntrenar_tblEntrenamiento, MakePoint(iColumna, iRenglon), -1, "Reversa");
-
 	return 0;
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			ENT_ActualizarListaConTabla
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Actualiza la información de la lista con la información
+.						que se encuentra en la tabla
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ActualizarListaConTabla()
 {
 	int iNumRenglones=0;
@@ -644,15 +738,23 @@ int ENT_ActualizarListaConTabla()
 		Fmt(p.cDescripcion,"%s<%s",cDescripcion);
 		
 		ListReplaceItem(miLista, &p, i+1);
-		
 	}
 	return 0;
 }
 
 
 
-
-
+/*****************************************************************************
+.
+. Función C:			PRE_GuardarPosiciones
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura el evento solicitado por el usuario, para el
+.						guardado de la información entrenada
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_GuardarPosiciones (int panel, int control, int event,
 									   void *callbackData, int eventData1, int eventData2)
 {
@@ -716,15 +818,23 @@ int CVICALLBACK PRE_GuardarPosiciones (int panel, int control, int event,
 									  VAL_ASCII);
 				WriteFile (iEtiqueta, cBuffer, strlen(cBuffer));
 				CloseFile (iEtiqueta);
-				
 			}
-			
 			break;
 	}
 	return 0;
 }
 
 
+/*****************************************************************************
+.
+. Función C:			PRE_LeerPosiciones
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Carga la información de un archivo existente
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PRE_LeerPosiciones (int panel, int control, int event,
 									void *callbackData, int eventData1, int eventData2)
 {
@@ -750,7 +860,6 @@ int CVICALLBACK PRE_LeerPosiciones (int panel, int control, int event,
 			//verifica que la lista se encuentre vacia
 			int numero = ListNumItems (miLista);
 			
-			
 			//comienza a insertar la información en la lista
 			stPosicion p;
 			int iIndice=0;
@@ -761,8 +870,6 @@ int CVICALLBACK PRE_LeerPosiciones (int panel, int control, int event,
 								  VAL_ASCII);
 			ReadFile (iet, cBuffer, 1000);
 			CloseFile (iet);
-			
-			
 			
 			for (int i=0;i<30;i++)
 			{
@@ -786,7 +893,6 @@ int CVICALLBACK PRE_LeerPosiciones (int panel, int control, int event,
 					iIndice++;
 					iIndice2=iIndice;
 					
-					
 					Fmt(p.cDescripcion,"%s<%s",cEtiqueta);
 					p.iLineal         =pos[i][0];
 					p.iNumeroVelocidad=pos[i][1];
@@ -804,17 +910,11 @@ int CVICALLBACK PRE_LeerPosiciones (int panel, int control, int event,
 					cLetra++;
 	
 					GRA_InsertarPunto(p.iLineal, p.iRotacional,cCadena);
-	
-		
 					ENT_PintarPuntos(ENTRENANDO);
-	
 					ENT_InformacionTabla(INSERTAR);
-					
 					ENT_PintarPuntos(CONFIGURANDO, p);
 				}
 			}
-			
-			
 			break;
 	}
 	return 0;
@@ -822,6 +922,18 @@ int CVICALLBACK PRE_LeerPosiciones (int panel, int control, int event,
 
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_ActualizarTabla
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Recibe como parametros el punto que se ha modificado
+.						en la tabla y procede a actualizar la lista con la
+.						nueva información.
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ActualizarTabla(int iE1, int iE2)
 {
 	//cuando se ha cambiado el tipo
@@ -840,12 +952,21 @@ int ENT_ActualizarTabla(int iE1, int iE2)
 
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_InformacionTabla
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_InformacionTabla(stTabla accion)
 {
 	static char cPosicion='A';
 	static int iRenglon=0;
 	char cCadena[5]={0};
-	
 	
 	if (accion == INSERTAR)
 	{
@@ -870,7 +991,6 @@ int ENT_InformacionTabla(stTabla accion)
 			Fmt(cNumero,"%s<%d",i+1);
 			InsertTableCellRingItem(iPanelEntrenamiento, pEntrenar_tblEntrenamiento, MakePoint(4, iRenglon), -1, cNumero);
 		}
-		
 		cPosicion++;
 	}
 	else
@@ -884,7 +1004,16 @@ int ENT_InformacionTabla(stTabla accion)
 
 
 
-
+/*****************************************************************************
+.
+. Función C:			ENT_InformacionTabla
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_PintarPuntos(stPintaMarcas Tipo,...)
 {
 	va_list pa;
@@ -958,6 +1087,20 @@ int ENT_PintarPuntos(stPintaMarcas Tipo,...)
 }
 
 
+
+/*****************************************************************************
+.
+. Función C:			ENT_CapturaNuevoPunto
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura el evento generado por el usuario desde la
+.						botonera, en donde ha solicitado que la posición
+.						actual del sistema, sea registrado como posición
+.						a entrenar.
+. Parámetro de entrada:	los de una función callback
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_CapturarNuevoPunto()
 {
 	char cCadena[6]={0};
@@ -993,6 +1136,19 @@ int ENT_CapturarNuevoPunto()
 }
 
 
+
+/*****************************************************************************
+.
+. Función C:			ENT_EntrenamientoPaso2
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Una vez que el usario ha establecido la posición
+.						de cero (referencia), se procede a la habilitación
+.						para la captura del resto de las posiciones.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_EntrenamientoPaso2()
 {
 	//cancela la asociacion de funcion  anterior
@@ -1004,7 +1160,17 @@ int ENT_EntrenamientoPaso2()
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			ENT_EntrenamientoPaso3
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura el evento en donde el usuario ha dicho que
+.						el entrenamiento ha finalizado.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_EntrenamientoPaso3()
 {
 	//Cuando el usuario ha indicado que el entrenamiento ha finalizado
@@ -1014,6 +1180,16 @@ int ENT_EntrenamientoPaso3()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_CicloConcluido
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Esta función opera como contador de ciclos.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_CicloConcluido()
 {
 	int iNum=0;
@@ -1025,6 +1201,16 @@ int ENT_CicloConcluido()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_ContinuarRecorridoPrueba
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Esta función da inicio al proceso de movimiento
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ContinuarRecorridoPrueba()
 {
 	double dTiempoTmp=0;
@@ -1059,6 +1245,17 @@ int ENT_ContinuarRecorridoPrueba()
 }
 
 
+
+/*****************************************************************************
+.
+. Función C:			ENT_ColocaMensaje
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Despliega un mensaje en la pantalla
+. Parámetro de entrada:	char *cMensaje | cadena con el mensaje a desplegar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ColocaMensaje(char *cMensaje)
 {
 	InsertTextBoxLine (iPanelEntrenamiento, pEntrenar_txtCajaTexto, 0,
@@ -1067,12 +1264,35 @@ int ENT_ColocaMensaje(char *cMensaje)
 	return 0;
 }
 
+
+/*****************************************************************************
+.
+. Función C:			ENT_ActualizaEsperaBoton
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura el evento de espera
+. Parámetro de entrada:	char *cMensaje | cadena con el mensaje a desplegar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ActualizaEsperaBoton()
 {
 	esperaBoton = 1;
 	return 0;
 }
 
+
+/*****************************************************************************
+.
+. Función C:			ENT_LeeEsperaBoton
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Función utilizada para la ejecución de movimientos
+.						paso a paso.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_LeeEsperaBoton()
 {
 	
@@ -1092,6 +1312,18 @@ int ENT_LeeEsperaBoton()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_FuncionPasoAPaso
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Implementa la habilitación de la ejecución paso a paso
+.						al asociar la ejecución de una función cuando se
+.						pulse el boton X de la botonera.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_FuncionPasoAPaso()
 {
 	funcionPasoAPaso = !funcionPasoAPaso;
@@ -1100,6 +1332,17 @@ int ENT_FuncionPasoAPaso()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_DetenerPruebaBotonera
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura la solicitud por parte del usuario de 
+.						detener la ejecución de la prue ba actual
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_DetenerPruebaBotonera()
 {
 	ENT_ConfirmaInicioRecorridoPrueba(NULL, NULL);
@@ -1114,6 +1357,17 @@ int ENT_DetenerPruebaBotonera()
 
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_IniciarRecorridoPrueba
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Da inicio al proceso de prueba, enviando en primer
+.						paso la palanca a la posición de inicio del recorrido.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_IniciarRecorridoPrueba()
 {
 	PRE_ControlesEntrenamiento(CTRL_IR_POSICION_INICIAL);
@@ -1130,6 +1384,18 @@ int ENT_IniciarRecorridoPrueba()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_ModoMotorABB
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Da inicio al proceso de prueba, enviando en primer
+.						paso la palanca a la posición de inicio del recorrido.
+. Parámetro de entrada:	int iModo | 0 deshabilitar
+.									1 habilitar
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_ModoMotorABB(int iModo)
 {
 	if (iModo==0)
@@ -1161,18 +1427,38 @@ int ENT_ModoMotorABB(int iModo)
 	
 
 
+/*****************************************************************************
+.
+. Función C:			ENT_PruebaRecorrido
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Da inicio al proceso de ejecución de prueba en el
+.						recorrido.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ENT_PruebaRecorrido()
 {
 	ENT_PintarPuntos(ENTRENANDO);
 	PRE_ControlesEntrenamiento(CTRL_ESPERA_BOTON_INICIO_PRUEBA);
 	ENT_ConfirmaInicioRecorridoPrueba(&ENT_IniciarRecorridoPrueba, &ENT_DetenerPruebaBotonera);
 	ENT_ModoPasoAPaso(&ENT_FuncionPasoAPaso, &ENT_ModoMotorABB);
-	
 	return 0;
 }
 
 
-
+/*****************************************************************************
+.
+. Función C:			EstablecePosicionActual
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Toma la posición actual de los enconder de los motores
+.						y la establece como posición (0,0).
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int EstablecePosicionActual()
 {
 	static int i=0;
@@ -1200,6 +1486,19 @@ int EstablecePosicionActual()
 }
 
 
+
+/*****************************************************************************
+.
+. Función C:			SetPosicionActual
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura el evento de la pantalla donde el usuario a
+.						solicitado que se defina la posición actual como
+.						el origen
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK SetPosicionActual (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -1207,8 +1506,6 @@ int CVICALLBACK SetPosicionActual (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 			EstablecePosicionActual();
-			
-
 			break;
 	}
 	return 0;
@@ -1216,6 +1513,17 @@ int CVICALLBACK SetPosicionActual (int panel, int control, int event,
 
 
 
+/*****************************************************************************
+.
+. Función C:			ImprimePosicion
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Manda a la pantalla la información de la posicion
+.						actual de los enconders de los motores
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int ImprimePosicion()
 {
 	static int contador=1;
@@ -1227,6 +1535,19 @@ int ImprimePosicion()
 }
 
 
+/*****************************************************************************
+.
+. Función C:			ActivaTimer
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Captura el evento de la pantalla para que se habilite
+.						el timer que aydará en el proceso de ubicación del
+.						sistema e informar que la palanca se encuentra 
+.						cerca de....
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK ActivaTimer (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -1243,8 +1564,17 @@ int CVICALLBACK ActivaTimer (int panel, int control, int event,
 }
 
 
-
-
+/*****************************************************************************
+.
+. Función C:			PosicionActual
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Timer que actualiza la posicion actual del sistema
+.						y calcula que se encuentra cerca de...
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	18 de Febrero de 2011
+.
+*****************************************************************************/
 int CVICALLBACK PosicionActual (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -1309,13 +1639,11 @@ int CVICALLBACK PosicionActual (int panel, int control, int event,
 			//CanvasDrawPoint (iPanelEntrenamiento, pEntrenar_cnvDemo, MakePoint(x,y));
 			*/
 			
-			
 			long iRotacional;
 			long iLineal;
 	
 			MOT_PosicionActual(&iRotacional, &iLineal);
 			SetCtrlVal (iPanelEntrenamiento, pEntrenar_strCercaDe, PAT_PosicionCercaDe(600, miLista, iRotacional, iLineal));
-			
 			
 			break;
 	}
