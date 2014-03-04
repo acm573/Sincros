@@ -43,10 +43,6 @@ int PRE_AnimacionMenu(stMenuAcciones Accion)
 	}
 	else
 	{
-		
-		
-		
-		
 		fin = -ANCHO_MENU;
 		inicio = 0;
 	}

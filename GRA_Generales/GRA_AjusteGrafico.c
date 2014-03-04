@@ -93,6 +93,11 @@ int GRA_InicializarCanvas(int iAlto, int iAncho, int iAltoC, int iAnchoC)
 		ListDispose(ListaPuntos);
 	}
 	
+	if (ListaEtiqueta != 0)
+	{
+		ListDispose(ListaEtiqueta);
+	}
+	
 	//Inicializa la lista
 	ListaPuntos = ListCreate (sizeof(Point));
 	ListaEtiqueta = ListCreate (sizeof(char)*40);

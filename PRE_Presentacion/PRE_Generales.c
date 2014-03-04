@@ -61,6 +61,8 @@ int PRE_ResaltarOpcion(int iPanel, int iControl, int iFondo, int iCantidad, ...)
 		SetCtrlAttribute(iPanel, iFondo, ATTR_LEFT, iLeft);
 	}
 	
+	free(iLista);
+	
 	//Llama al proceso que pinta el mensaje de ayuda en pantalla
 	PRI_MensajeControl(iPanel, iControl);
 

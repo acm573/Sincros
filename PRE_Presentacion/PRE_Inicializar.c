@@ -14,6 +14,7 @@
 #include "mov_movimiento.h"
 #include "com_comunicacion.h"
 #include "pre_variables.h"
+#include "bds_basededatos.h"
 #include <formatio.h>
 
 
@@ -49,6 +50,7 @@ int PRE_InicializarSistema()
 	MistPosicion.x=0;
 	MistPosicion.y=0;
 	
+	iConexion = -1;
 	//miLista = NULL;
 	
 	//Inicia la aplicación de comunicación TCP
@@ -85,6 +87,11 @@ int PRE_InicializarSistema()
 	SetCtrlVal(iPanelPrincipal, pPrincipal_ledBotonRearme, DIG_EstadoEntrada(DIG_REARME));
 	SetCtrlVal(iPanelPrincipal, pPrincipal_ledParoEmergencia, DIG_EstadoEntrada(DIG_PARO_EMERGENCIA));
 	
+	//inicializa la conexión con la base de datos
+	BDS_Conexion();
+	
+	
+	
 	return 0;
 }
 
@@ -106,5 +113,6 @@ int PRE_Finalizar()
 	COM_FinalizaAplicacion();
 	MOT_CondicionSalida();
 	
+	BDS_Cerrar();
 	return 0;
 }
