@@ -35,6 +35,7 @@
 #define  pCatTransm_DECORATION_2          14      /* control type: deco, callback function: (none) */
 #define  pCatTransm_tblRelaciones         15      /* control type: table, callback function: (none) */
 #define  pCatTransm_TEXTMSG               16      /* control type: textMsg, callback function: (none) */
+#define  pCatTransm_TEXTMSG_2             17      /* control type: textMsg, callback function: (none) */
 
 #define  pEntrenar                        4       /* callback function: PRE_PanelEntrenamiento */
 #define  pEntrenar_lstTransmisiones       2       /* control type: listBox, callback function: PRE_SeleccionEntrenamiento */

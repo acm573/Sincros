@@ -12,11 +12,11 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Sincros.prj"
-Drag Bar Left = 157
-Window Top = 59
-Window Left = 37
-Window Bottom = 743
-Window Right = 1258
+Drag Bar Left = 214
+Window Top = 76
+Window Left = 16
+Window Bottom = 760
+Window Right = 1237
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -30,9 +30,9 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 7
+Number of Opened Files = 8
 Window Confinement Region Enabled = True
-MainColumnWidth = 140
+MainColumnWidth = 197
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -71,8 +71,8 @@ Disk Date = 3476799905
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
-Window Z-Order = 5
-Source Window State = "1,148,148,148,17,36,36,0,3,80,0,500,0,15,0,25,147,0,148,17,349,683,1,0,"
+Window Z-Order = 3
+Source Window State = "1,222,236,222,0,0,0,0,0,80,0,0,0,15,0,25,168,0,164,51,349,683,1,22,"
 Line Tags = "758,1177,1278,1446,"
 
 [File 0005]
@@ -90,12 +90,12 @@ Line Tags = "137,"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_EventosCatTransmisiones.c"
 File Type = "CSource"
-Disk Date = 3477404762
+Disk Date = 3477412678
 In Projects = "1,"
 Window Top = 302
 Window Left = 154
-Window Z-Order = 3
-Source Window State = "1,133,133,133,49,61,49,0,0,80,0,13,0,14,0,25,100,0,133,75,349,683,1,10,"
+Window Z-Order = 1
+Source Window State = "1,80,80,80,16,31,16,0,0,121,0,13,0,14,0,34,72,0,86,24,349,683,1,10,"
 
 [File 0007]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -105,7 +105,7 @@ Disk Date = 3476991595
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Window Z-Order = 7
+Window Z-Order = 8
 Source Window State = "1,54,54,54,16,43,43,0,0,80,0,5,0,69,0,25,0,0,14,21,349,683,1,19,"
 
 [File 0008]
@@ -126,19 +126,18 @@ Disk Date = 3477404699
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Window Z-Order = 4
+Window Z-Order = 6
 Source Window State = "1,96,96,96,46,48,46,0,0,80,0,0,0,0,0,25,0,0,12,20,349,683,1,20,"
 
 [File 0010]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/BaseDeDa"
 Path Line0002 = "tos/BDS_Lectura.c"
 File Type = "CSource"
-Disk Date = 3477405522
+Disk Date = 3477412016
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Window Z-Order = 1
-Source Window State = "1,101,101,101,8,19,8,0,0,128,0,0,0,1,0,34,76,0,86,64,349,683,1,22,"
+Source Window State = "1,137,139,137,0,0,0,0,0,80,0,13,0,14,0,25,113,0,137,62,349,683,1,22,"
 
 [File 0011]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -148,7 +147,7 @@ Disk Date = 3477339171
 In Projects = "1,"
 Window Top = 332
 Window Left = 202
-Window Z-Order = 6
+Window Z-Order = 7
 Source Window State = "1,18,18,18,0,40,0,0,0,80,0,14,0,15,0,25,0,0,18,0,349,683,1,10,"
 
 [File 0012]
@@ -159,7 +158,7 @@ Disk Date = 3477397524
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
-Window Z-Order = 2
+Window Z-Order = 5
 Source Window State = "1,21,39,21,0,15,0,0,0,80,0,0,0,1,0,25,18,0,21,0,349,683,1,10,"
 
 [File 0013]
@@ -220,28 +219,30 @@ Disk Date = 3477337968
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,51,52,51,0,0,0,0,0,80,0,67,0,15,0,25,33,0,101,16,349,683,1,79,"
+Source Window State = "1,138,138,138,4,27,27,0,3,80,0,67,0,15,0,25,110,0,138,4,349,683,1,79,"
 
 [File 0019]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_Principal.uir"
 File Type = "User Interface Resource"
-Disk Date = 3477405172
+Disk Date = 3477411967
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
 Window Height = 349
 Window Width = 683
+Window Z-Order = 2
 
 [File 0020]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
 Path Line0002 = "/PRE_Tipos.h"
 File Type = "Include"
-Disk Date = 3462451108
+Disk Date = 3477409822
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
-Source Window State = "1,32,32,32,1,11,11,0,3,0,0,0,0,0,0,0,0,0,32,1,349,683,1,0,"
+Window Z-Order = 4
+Source Window State = "1,35,35,35,8,14,14,0,0,80,0,15,0,0,0,25,15,0,35,14,349,683,1,22,"
 
 [File 0021]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/PRE_Presentacion"
@@ -251,7 +252,7 @@ Disk Date = 3476991631
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,18,19,19,5,3,3,0,0,0,0,0,0,0,0,0,15,0,46,38,349,683,1,10,"
+Source Window State = "1,18,19,19,5,3,3,0,0,80,0,0,0,0,0,25,0,0,46,38,349,683,1,10,"
 
 [File 0022]
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/GRA_Generales/CA"
@@ -407,7 +408,7 @@ Disk Date = 3461844216
 In Projects = "1,"
 Window Top = 242
 Window Left = 122
-Source Window State = "1,27,27,27,68,72,72,0,0,0,0,0,0,0,0,0,0,0,27,71,349,683,1,0,"
+Source Window State = "1,27,27,27,68,72,72,0,0,80,0,0,0,0,0,25,0,0,27,71,349,683,1,0,"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

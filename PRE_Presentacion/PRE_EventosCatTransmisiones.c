@@ -20,6 +20,10 @@
 int BDS_LeerDetalleTransmision(int iPanel, ...);
 int BDS_LeerTransmisiones(int iPanel, int iControl);
 int PRE_CambioTransmision(int iPanel, int iControl);
+int PRE_OpcionNuevaTransimision(void);
+int PRE_ActualizaTablaRelaciones(void);
+int PRE_CancelarProceso(void);
+
 
 /*****************************************************************************
 .
@@ -67,15 +71,34 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 	
 	if (event == EVENT_LEFT_CLICK_UP)
 	{
-		if (control == pCatTransm_picCerrar)
+		switch (control)
 		{
-			PRE_OcultarPanel(panel);
+			case pCatTransm_picCerrar:
+				PRE_OcultarPanel(panel);
+				break;
+				
+			case pCatTransm_picCancelar:
+				PRE_CancelarProceso();
+				break;
+				
+			case pCatTransm_picAgregar:
+				PRE_OpcionNuevaTransimision();
+				break;
+				
+			case pCatTransm_lstTransmisiones:
+				PRE_CambioTransmision(panel, control);
+				break;
 		}
 	}
 	
-	if (event == EVENT_LEFT_CLICK_UP)
+	if (event == EVENT_VAL_CHANGED)
 	{
-		PRE_CambioTransmision(panel, control);
+		switch (control)
+		{
+			case pCatTransm_numNumeroVelocidades:
+				PRE_ActualizaTablaRelaciones();
+				break;
+		}
 	}
 	
 	return 0;
@@ -96,11 +119,9 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 *****************************************************************************/
 int PRE_IniciarCatTransmisiones()
 {
-	stEntrenar Modo = CTRL_SIN_TRANSMISIONES;
-	
 	PRE_UbicarPanel(iPanelCatTransmisiones);
 	
-	if (BDS_LeerTransmisiones(iPanelCatTransmisiones, pCatTransm_lstTransmisiones) > 0)
+	if (BDS_LeerTransmisiones(iPanelCatTransmisiones, pCatTransm_lstTransmisiones) == TRA_CON_TRANSMISIONES)
 	{
 		PRE_CambioTransmision(iPanelCatTransmisiones, pCatTransm_lstTransmisiones);
 	}
@@ -133,5 +154,138 @@ int PRE_CambioTransmision(int iPanel, int iControl)
 	BDS_LeerDetalleTransmision(iPanelCatTransmisiones, pCatTransm_txtNombreTransmision,
 				pCatTransm_numNumeroVelocidades, pCatTransm_tblRelaciones, iId);
 		
+	return 0;
+}
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_OpcionNuevaTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			El usuario ha solicitado capturar unan nueva 
+.						transmision
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_OpcionNuevaTransimision()
+{
+	//limpia el contenido de los controles
+	SetCtrlVal(iPanelCatTransmisiones, pCatTransm_txtNombreTransmision, "");
+	SetCtrlVal(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, 1);
+	DeleteTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, 1,
+					 -1);
+	
+	//modifica el comportamiento de los controles
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picAgregar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCerrar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelPrincipal, pPrincipal_btnMenu, ATTR_DIMMED, 1);
+	
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_txtNombreTransmision, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_tblRelaciones, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	
+	PRE_ActualizaTablaRelaciones();
+	
+	return 0;
+}
+
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_CancelarProceso
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			El usuario ha solicitado cancelar el proceso
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_CancelarProceso()
+{
+	//restablece los controles al comportamiento incial
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picAgregar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCerrar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCancelar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelPrincipal, pPrincipal_btnMenu, ATTR_DIMMED, 0);	
+	
+	PRE_IniciarCatTransmisiones();	
+	
+	return 0;
+}
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_ActualizaTablaRelaciones
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Cuando el usuario define un numero de velocodades,
+.						se crean el número de renglones correspondientes en la
+.						tabla de relaciones. Se tiene cuidado cuando el usuario
+.						modifica a un valor menor y previamente existen ya
+.						renglones creados.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_ActualizaTablaRelaciones()
+{
+	int iRenglonesActuales = 0;	//numero de velocidades actuales
+	int iRenglonesUsuario = 0;	//numero de velocidades indicadas por usuario
+	
+	//obtiene primero el numero de renglones que pueda tener la tabla
+	GetNumTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, &iRenglonesActuales);
+
+	//obtiene el numero de velocidades indicadas por el usuario
+	GetCtrlVal(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, &iRenglonesUsuario);
+	
+	//vefifica si se necesita aplicar alguna validación antes de crear los 
+	//renglones en la tabla de relaciones
+	if (iRenglonesActuales == 0)
+	{
+		//la tabla se encuentra vacia por lo que se procede a crear los renglones
+		//sin validacion alguna
+		InsertTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, 1,
+						 iRenglonesUsuario, VAL_USE_MASTER_CELL_TYPE);
+	}
+	else
+	{
+		//ya existen renglones en la tabla, por lo que se debe analizar si se
+		//deben insertar o eliminar renglones en la tabla de relaciones
+		
+		if (iRenglonesActuales < iRenglonesUsuario)
+		{
+			//se ha determinado que hacen falta mas renglones en la tabla de relaciones
+			//por lo que se procede a insertar nuevos renglones al final
+			//de la tabla de relaciones
+			InsertTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, iRenglonesActuales,
+						 iRenglonesUsuario-iRenglonesActuales, VAL_USE_MASTER_CELL_TYPE);
+		}
+		else
+		{
+			if (iRenglonesActuales != iRenglonesUsuario)
+			{
+				//se ha determinado que se deben eliminar renglones de la tabla
+				//de relaciones
+				DeleteTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, iRenglonesUsuario,
+								 iRenglonesActuales-iRenglonesUsuario);
+			}
+		}
+	}
+	
+	
+	
+	
 	return 0;
 }

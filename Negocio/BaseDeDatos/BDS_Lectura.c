@@ -1,13 +1,38 @@
+/******************************************************************************
+.
+. Centro de Ingeniería y Desarrollo Indusrial
+. Archivo:					BDS_Lectura.c
+. Propósito:				Contiene las funciones referentes al proceso de 
+.							consulta de información a la base de datos.
+. Lenguaje:					LabWindows/CVI 13.0.0 (647)
+. Autor:					Cesar Armando Cruz Mendoza
+. Historia
+. Fecha de Creación:		11 de Marzo de 2014
+. Responsable modificación: 
+.
+*******************************************************************************/
 #include <userint.h>
 #include "bds_basededatos.h"
 #include <formatio.h>
+#include "pre_tipos.h"
 
 char *GRA_Strcat(int iNoElementos, ...);
 
 
-int BDS_LeerTransmisiones(int iPanel, int iControl)
+/*****************************************************************************
+.
+. Función C:			BDS_LeerTransmisiones
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Obtiene la información de la transmisión que se ha
+.						seleccionado en la pantalla.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+stTransmisiones BDS_LeerTransmisiones(int iPanel, int iControl)
 {
-	int iRegistros=0;		//contador de registros encontrados
+	stTransmisiones Modo = TRA_SIN_TRANSMISIONES;
 	int iVista;				//referencia a la vista solicitada
 	int iIdTransmision=0;			//campo
 	char cIdentificador[250]={0};	//campo
@@ -28,20 +53,33 @@ int BDS_LeerTransmisiones(int iPanel, int iControl)
 	while (DBFetchNext(iVista)==DB_SUCCESS)
 	{
 		InsertListItem(iPanel, iControl, -1, cIdentificador, iIdTransmision);
-		iRegistros++;
+		Modo = TRA_CON_TRANSMISIONES;
 	}
 	
-	if (iRegistros>0)
+	if (Modo == TRA_CON_TRANSMISIONES)
 		SetCtrlIndex(iPanel, iControl, 0);
 	
 	DBClear(iVista);
-	return iRegistros;
+	return Modo;
 }
 
 
 
-int BDS_LeerDetalleTransmision(int iPanel, ...)
+/*****************************************************************************
+.
+. Función C:			BDS_LeerDetalleTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Obtiene la información de la transmisión que se ha
+.						seleccionado en la pantalla y carga la información
+.						en detalle.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+stTransmisiones BDS_LeerDetalleTransmision(int iPanel, ...)
 {
+	stTransmisiones Modo = TRA_CORRECTO;
 	va_list pa;
 	int iNombreTransmision;
 	int iNumeroVelocidades;
@@ -53,7 +91,6 @@ int BDS_LeerDetalleTransmision(int iPanel, ...)
 	int iVista=0;
 	int iNum_Velocidad;
 	double dRelacion;
-	
 	
 	va_start(pa, iPanel);
 	
@@ -82,7 +119,6 @@ int BDS_LeerDetalleTransmision(int iPanel, ...)
 	
 	//ahora se obtiene la informacion de las relaciones de las velocidades
 	//asociadas a la transmision que se ha seleccionado
-	
 	DBText(GRA_Strcat(3,
 				   "SELECT numero_velocidad, relacion FROM relaciones WHERE fk_id_transmision = ",
 				   cId,
@@ -91,19 +127,18 @@ int BDS_LeerDetalleTransmision(int iPanel, ...)
 		  	Int, &iNum_Velocidad, 
 			Double, &dRelacion);
 	
+	DeleteTableRows (iPanel, iTablaRelaciones, 1, -1);
+	
 	while (DBFetchNext(iVista)==DB_SUCCESS)
 	{
 		//inserta un nuevo renglon
 		InsertTableRows (iPanel, iTablaRelaciones, 1, 1,
 						 VAL_USE_MASTER_CELL_TYPE);
 		
-		SetTableCellVal (iPanel, iTablaRelaciones, MakePoint(1,1), iNum_Velocidad);
-		SetTableCellVal (iPanel, iTablaRelaciones, MakePoint(2,1), dRelacion);
-		
-		
+		SetTableCellVal (iPanel, iTablaRelaciones, MakePoint(1,1), dRelacion);
 	}
 	
 	DBClear(iVista);
 	
-	return 0;
+	return Modo;
 }
