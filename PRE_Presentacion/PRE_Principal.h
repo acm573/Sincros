@@ -33,7 +33,7 @@
 #define  pCatTransm_numNumeroVelocidades  12      /* control type: numeric, callback function: PRE_SeleccionCatTransmisiones */
 #define  pCatTransm_picAgregar            13      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
 #define  pCatTransm_DECORATION_2          14      /* control type: deco, callback function: (none) */
-#define  pCatTransm_tblRelaciones         15      /* control type: table, callback function: (none) */
+#define  pCatTransm_tblRelaciones         15      /* control type: table, callback function: PRE_SeleccionCatTransmisiones */
 #define  pCatTransm_TEXTMSG               16      /* control type: textMsg, callback function: (none) */
 #define  pCatTransm_TEXTMSG_2             17      /* control type: textMsg, callback function: (none) */
 

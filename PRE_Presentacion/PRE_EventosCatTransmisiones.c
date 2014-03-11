@@ -19,10 +19,21 @@
 
 int BDS_LeerDetalleTransmision(int iPanel, ...);
 int BDS_LeerTransmisiones(int iPanel, int iControl);
+stTransmisiones BDS_VerificaDescripcionTransmision(char  *pcNombre);
 int PRE_CambioTransmision(int iPanel, int iControl);
 int PRE_OpcionNuevaTransimision(void);
 int PRE_ActualizaTablaRelaciones(void);
 int PRE_CancelarProceso(void);
+stTransmisiones PRE_OpcionActiva(stTransmisiones opcion);
+int PRE_InsertarNuevaTransmision(void);
+int PRE_ActualizarTransmision(void);
+int PRE_GuardarTransmision(void);
+char *GRA_IntStr(int iValor);
+char *GRA_Strcat(int iNoElementos, ...);
+stTransmisiones BDS_InsertaTransmision(char *pcDescripcion, int iNumVelocidades,
+	double dListaRelaciones[]);
+
+
 
 
 /*****************************************************************************
@@ -51,6 +62,29 @@ int CVICALLBACK PRE_PanelCatTransmisiones (int panel, int event, void *callbackD
 
 /*****************************************************************************
 .
+. Función C:			PRE_OpcionActiva
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Almacena e informa la opción del menu que se encuentra
+.						activa en el sistema.
+. Parámetro de entrada:	los de una funcion callback
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+stTransmisiones PRE_OpcionActiva(stTransmisiones opcion)
+{
+	static stTransmisiones Modo = TRA_MENU_PRINCIPAL;
+	
+	if (opcion != -1)
+		Modo = opcion;
+
+	return Modo;
+}
+
+
+
+/*****************************************************************************
+.
 . Función C:			PRE_SeleccionCatTransmisiones
 . Responsable:			César Armando Cruz Mendoza
 . Descripcion: 			Captura los eventos registrados sobre los controles 
@@ -65,8 +99,8 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 {
 	if (event == EVENT_MOUSE_POINTER_MOVE)
 	{
-		PRE_ResaltarOpcion(panel, control, pCatTransm_cnvFondo, 3, pCatTransm_lstTransmisiones, 
-			pCatTransm_numNumeroVelocidades, pCatTransm_txtNombreTransmision);
+		PRE_ResaltarOpcion(panel, control, pCatTransm_cnvFondo, 4, pCatTransm_lstTransmisiones, 
+			pCatTransm_numNumeroVelocidades, pCatTransm_txtNombreTransmision, pCatTransm_tblRelaciones);
 	}
 	
 	if (event == EVENT_LEFT_CLICK_UP)
@@ -83,6 +117,10 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 				
 			case pCatTransm_picAgregar:
 				PRE_OpcionNuevaTransimision();
+				break;
+				
+			case pCatTransm_picGuardar:
+				PRE_GuardarTransmision();
 				break;
 				
 			case pCatTransm_lstTransmisiones:
@@ -126,6 +164,7 @@ int PRE_IniciarCatTransmisiones()
 		PRE_CambioTransmision(iPanelCatTransmisiones, pCatTransm_lstTransmisiones);
 	}
 	
+	PRE_OpcionActiva(-1);
 	//PRE_ControlesEntrenamiento(Modo);
 	//PRE_CondicionesIniciales();
 	return 0;
@@ -171,6 +210,8 @@ int PRE_CambioTransmision(int iPanel, int iControl)
 *****************************************************************************/
 int PRE_OpcionNuevaTransimision()
 {
+	PRE_OpcionActiva(TRA_AGREGAR_TRANSMISION);
+	
 	//limpia el contenido de los controles
 	SetCtrlVal(iPanelCatTransmisiones, pCatTransm_txtNombreTransmision, "");
 	SetCtrlVal(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, 1);
@@ -191,6 +232,10 @@ int PRE_OpcionNuevaTransimision()
 					  VAL_HOT);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, ATTR_CTRL_MODE,
 					  VAL_HOT);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, ATTR_DIMMED,
+					  1);
+	
+	
 	
 	PRE_ActualizaTablaRelaciones();
 	
@@ -211,15 +256,28 @@ int PRE_OpcionNuevaTransimision()
 *****************************************************************************/
 int PRE_CancelarProceso()
 {
+	PRE_OpcionActiva(TRA_MENU_PRINCIPAL);
+	
 	//restablece los controles al comportamiento incial
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picAgregar, ATTR_DIMMED, 0);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 0);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 0);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCerrar, ATTR_DIMMED, 0);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCancelar, ATTR_DIMMED, 0);
-	SetCtrlAttribute(iPanelPrincipal, pPrincipal_btnMenu, ATTR_DIMMED, 0);	
+	SetCtrlAttribute(iPanelPrincipal, pPrincipal_btnMenu, ATTR_DIMMED, 0);
 	
-	PRE_IniciarCatTransmisiones();	
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_txtNombreTransmision, ATTR_CTRL_MODE,
+					  VAL_INDICATOR);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_tblRelaciones, ATTR_CTRL_MODE,
+					  VAL_INDICATOR);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, ATTR_CTRL_MODE,
+					  VAL_INDICATOR);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, ATTR_DIMMED,
+					  0);
+	
+	PRE_IniciarCatTransmisiones();
+	
 	
 	return 0;
 }
@@ -283,9 +341,128 @@ int PRE_ActualizaTablaRelaciones()
 			}
 		}
 	}
-	
-	
-	
+	return 0;
+}
+
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_GuardarTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Ejecuta la petición del usuario para almacenar la
+.						información de la transmisión. Este proceso tiene 2
+.						variantes, insertar una nueva transmision o el de
+.						actualizar la información de una transmisión que ya
+.						exista en el sistema. Esto lo determina el sistema
+.						de manera automatica con la información de la opcion
+.						que se encuentra activa en el sistema.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_GuardarTransmision()
+{
+	if (PRE_OpcionActiva(-1) == TRA_AGREGAR_TRANSMISION)
+		PRE_InsertarNuevaTransmision();
+	else
+		PRE_ActualizarTransmision();
 	
 	return 0;
 }
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_InsertarNuevaTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Inserta una nueva transmision en el sistema
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_InsertarNuevaTransmision()
+{
+	char cMensajeError[500]={0};	//mensaje de error que se haya detectado
+	char cDescripcion[250]={0};		//nombre asignado a la transmision
+	int iNumVelocidades=0;			//numero de velocidades asociadas
+	double dRelacion=0;				//valor de la relacion de velocidad
+	char cVelocidad[5]={0};			//numero de velocidad en cadena
+	double *pdListaRelaciones;		//lista de relaciones configuradas
+	
+	//se requeren implementar algunas validaciones antes de iniciar
+	//el proceso de guardado de la nueva transmision
+	
+	//se verifica que la información se encuentra al 100% requisitada
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_txtNombreTransmision, cDescripcion);
+	if (strlen(cDescripcion) == 0)
+		strcat(cMensajeError,"- No se ha especificado un nombre a la transmision. \n");
+
+	//verifica la informacion del numero de velocidades asocidadas
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, &iNumVelocidades);
+	if (iNumVelocidades == 1)
+		strcat(cMensajeError,"- Se ha dejado el valor por defecto de 1 velocidad. \n");
+	
+	//vefifica los valores de relación para las velocidades capturadas
+	pdListaRelaciones = malloc(sizeof(double)*iNumVelocidades);
+	for (int i=0; i<iNumVelocidades; i++)
+	{
+		GetTableCellVal (iPanelCatTransmisiones, pCatTransm_tblRelaciones,
+						 MakePoint(1,i+1), &dRelacion);
+		pdListaRelaciones[i]=dRelacion;
+		
+		if (dRelacion == 0)
+		{
+			strcat(cMensajeError,
+				   GRA_Strcat(3,"- Para la velocidad ",GRA_IntStr(i+1)," falta indicar la relación. \n"));
+		}
+	}
+	
+	//debe verificar que el nombre de la transmision no exista ya en el sistema
+	if (BDS_VerificaDescripcionTransmision(cDescripcion)== TRA_EXISTE)
+		strcat(cMensajeError,"- Ya existe en el sistema una transmisión con el mismo nombre. \n");
+	
+	if (strlen(cMensajeError)>0)
+	{
+		MessagePopup ("Validación de información.", cMensajeError);
+	}
+	else
+	{
+		//inicia el proceso de guardado de la informacion, para lo cual obtiene
+		//la lista de relaciones de las velocidades que se han configurado
+		BDS_InsertaTransmision(cDescripcion, iNumVelocidades, pdListaRelaciones);
+	}
+	
+	free(pdListaRelaciones);
+
+	return 0;
+}
+
+
+
+/*****************************************************************************
+.						
+. Función C:			PRE_ActualizarTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Actualiza la informacion de la transmision que se
+.						ha editado en el sistema
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_ActualizarTransmision()
+{
+	
+	return 0;
+}
+
+
+
+
+
+
+
+

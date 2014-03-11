@@ -134,6 +134,10 @@ int PRI_MensajeControl(int iPanel, int iControl)
 			case pCatTransm_numNumeroVelocidades:
 				pcMensaje = "Indica el número de velocidades disponibles en la transmisión seleccionada. El numero de velocidades no incluye la reversa";
 				break;
+				
+			case pCatTransm_tblRelaciones:
+				pcMensaje = "Contiene los valores de relación de transmisión para cada una de las velocidades.";
+				break;
 		}
 	}
 	

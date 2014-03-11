@@ -142,3 +142,36 @@ stTransmisiones BDS_LeerDetalleTransmision(int iPanel, ...)
 	
 	return Modo;
 }
+
+
+
+
+/*****************************************************************************
+.
+. Función C:			BDS_VerificaDescripcionTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Verifica en la base de datos si ya existe alguna
+.						transmision que este utilizando el mismo nombre
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+stTransmisiones BDS_VerificaDescripcionTransmision(char  *pcNombre)
+{
+	stTransmisiones Modo = TRA_NO_EXISTE;
+	int iVista=0;
+	
+	DBText(GRA_Strcat(3,
+				   "SELECT * FROM transmisiones WHERE identificador = \"",
+				   pcNombre,"\""),&iVista);
+	
+	while (DBFetchNext(iVista)==DB_SUCCESS)
+	{
+		Modo = TRA_EXISTE;
+	}
+	
+	DBClear(iVista);
+	
+	return Modo;
+}

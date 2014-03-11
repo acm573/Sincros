@@ -9,7 +9,7 @@ IVI Standard Root Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files/IVI Foundation/VISA/winnt"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
-Number of Files = 37
+Number of Files = 38
 Target Type = "Executable"
 Flags = 2064
 Copied From Locked InstrDrv Directory = False
@@ -475,9 +475,9 @@ File Type = "CSource"
 Res Id = 33
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Negocio/BaseDeDatos/BDS_Funciones.c"
+Path Rel Path = "Negocio/BaseDeDatos/BDS_Escritura.c"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/BaseDeDa"
-Path Line0002 = "tos/BDS_Funciones.c"
+Path Line0002 = "tos/BDS_Escritura.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -489,9 +489,9 @@ File Type = "CSource"
 Res Id = 34
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Negocio/BaseDeDatos/BDS_Lectura.c"
+Path Rel Path = "Negocio/BaseDeDatos/BDS_Funciones.c"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/BaseDeDa"
-Path Line0002 = "tos/BDS_Lectura.c"
+Path Line0002 = "tos/BDS_Funciones.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -503,6 +503,20 @@ File Type = "CSource"
 Res Id = 35
 Path Is Rel = True
 Path Rel To = "Project"
+Path Rel Path = "Negocio/BaseDeDatos/BDS_Lectura.c"
+Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/BaseDeDa"
+Path Line0002 = "tos/BDS_Lectura.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Datos"
+Folder Id = 3
+
+[File 0036]
+File Type = "CSource"
+Res Id = 36
+Path Is Rel = True
+Path Rel To = "Project"
 Path Rel Path = "Negocio/Entrenamiento/ENT_CargaInformacion.c"
 Path Line0001 = "/c/Users/Acm/SkyDrive/CIDESI/Proyectos/QD0280/Desarrollo/Codigo/Negocio/Entrenam"
 Path Line0002 = "iento/ENT_CargaInformacion.c"
@@ -512,9 +526,9 @@ Project Flags = 0
 Folder = "ENT_Entrenamiento"
 Folder Id = 4
 
-[File 0036]
+[File 0037]
 File Type = "CSource"
-Res Id = 36
+Res Id = 37
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Negocio/Entrenamiento/ENT_Entrenamiento.c"
@@ -526,9 +540,9 @@ Project Flags = 0
 Folder = "ENT_Entrenamiento"
 Folder Id = 4
 
-[File 0037]
+[File 0038]
 File Type = "Include"
-Res Id = 37
+Res Id = 38
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Negocio/Entrenamiento/ENT_Funciones.h"
