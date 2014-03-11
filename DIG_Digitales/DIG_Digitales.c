@@ -165,7 +165,8 @@ int DIG_CrearTarea(int ipanel, int icontrol)
 	{
 		DAQmxCreateTask ("Digitales", &misDigitales);
 
-		DAQmxCreateDIChan (misDigitales, "Dev1/port0:2", "", DAQmx_Val_ChanForAllLines);
+		DAQmxCreateDIChan (misDigitales, "Dev1/port0/line2", "",
+						   DAQmx_Val_ChanForAllLines);
 	
 		DAQmxStartTask (misDigitales);
 	

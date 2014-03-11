@@ -50,17 +50,16 @@ int PRE_InicializarSistema()
 	MistPosicion.x=0;
 	MistPosicion.y=0;
 	
-	iConexion = -1;
 	//miLista = NULL;
 	
 	//Inicia la aplicación de comunicación TCP
-	COM_IniciaAplicacion();
+	//COM_IniciaAplicacion();
 	
-	Delay(2.0);
+	//Delay(2.0);
 
-	COM_IniciaClienteTCP();
+	//COM_IniciaClienteTCP();
 	
-	Delay(1.0);
+	//Delay(1.0);
 	
 	COM_EstructuraMensaje(1,10220,1,0);
 
@@ -88,7 +87,7 @@ int PRE_InicializarSistema()
 	SetCtrlVal(iPanelPrincipal, pPrincipal_ledParoEmergencia, DIG_EstadoEntrada(DIG_PARO_EMERGENCIA));
 	
 	//inicializa la conexión con la base de datos
-	BDS_Conexion();
+	DBConnection();
 	
 	
 	
@@ -113,6 +112,6 @@ int PRE_Finalizar()
 	COM_FinalizaAplicacion();
 	MOT_CondicionSalida();
 	
-	BDS_Cerrar();
+	DBClose();
 	return 0;
 }

@@ -17,6 +17,10 @@
 #include "pre_variables.h"
 
 
+int BDS_LeerDetalleTransmision(int iPanel, ...);
+int BDS_LeerTransmisiones(int iPanel, int iControl);
+int PRE_CambioTransmision(int iPanel, int iControl);
+
 /*****************************************************************************
 .
 . Función C:			PRE_PanelCatTransmisiones
@@ -68,5 +72,66 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 			PRE_OcultarPanel(panel);
 		}
 	}
+	
+	if (event == EVENT_LEFT_CLICK_UP)
+	{
+		PRE_CambioTransmision(panel, control);
+	}
+	
+	return 0;
+}
+
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_IniciarCatTransmisiones
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Una vez que el usuario ha solicitado mostrar el 
+.						catalogo de transmisiones, se despliega en pantalla
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	06 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_IniciarCatTransmisiones()
+{
+	stEntrenar Modo = CTRL_SIN_TRANSMISIONES;
+	
+	PRE_UbicarPanel(iPanelCatTransmisiones);
+	
+	if (BDS_LeerTransmisiones(iPanelCatTransmisiones, pCatTransm_lstTransmisiones) > 0)
+	{
+		PRE_CambioTransmision(iPanelCatTransmisiones, pCatTransm_lstTransmisiones);
+	}
+	
+	//PRE_ControlesEntrenamiento(Modo);
+	//PRE_CondicionesIniciales();
+	return 0;
+}
+
+
+
+/*****************************************************************************
+.
+. Función C:			PRE_CambioTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Procesa el cambio de selección de una transmisión en
+.						la lista que muestra las que se han configurado.
+.						Su efecto es actualizar la información en la pantalla
+.						con la infomaci+ón en detalle de la mista.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	06 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_CambioTransmision(int iPanel, int iControl)
+{
+	int iId=0;	
+	
+	GetCtrlVal(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, &iId);
+	BDS_LeerDetalleTransmision(iPanelCatTransmisiones, pCatTransm_txtNombreTransmision,
+				pCatTransm_numNumeroVelocidades, pCatTransm_tblRelaciones, iId);
+		
 	return 0;
 }

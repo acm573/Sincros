@@ -44,6 +44,7 @@ int PRE_IniciarEntrenamiento(void);
 int PRE_Finalizar(void);
 
 int PRI_LlamadasRemotas(int (*funcionPaso)(void));
+int PRE_IniciarCatTransmisiones(void);
 
 ListType miLista;
 stPosicion MistPosicion;

@@ -19,6 +19,8 @@ stEntrenar ENT_CargarTransmisiones(int iPanel, int iControl)
 }
 
 
+
+
 /*
  * Carga las posiciones para la transmision  seleccionada
  */

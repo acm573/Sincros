@@ -62,31 +62,34 @@ int COM_FinalizaAplicacion()
 	//mientras se detecta que la aplicación esta corriendo o el contador
 	//de retardo sea menor a 500, esperamos a que la aplicación
 	//se finalice automaticamente
-	do
+	if (iRefAppLabVIEW!=0)
 	{
-		iTmp = ExecutableHasTerminated (iRefAppLabVIEW);
-		Delay(0.01);
-		iRetardo++;
-	}while ((iTmp==0) && (iRetardo<500));
-		
-	
-	//en caso de que el contador haya superado el limite y la aplicación
-	//continue corriendo, se procede a destruir el proceso
-	if (ExecutableHasTerminated (iRefAppLabVIEW)==0)
-	{
-		TerminateExecutable (iRefAppLabVIEW);
-		
-		if (lstListaComandos!=0)
+		do
 		{
-			ListDispose(lstListaComandos);
-			ListDispose(lstListaRespuestas);
+			iTmp = ExecutableHasTerminated (iRefAppLabVIEW);
+			Delay(0.01);
+			iRetardo++;
+		}while ((iTmp==0) && (iRetardo<500));
+		
+	
+		//en caso de que el contador haya superado el limite y la aplicación
+		//continue corriendo, se procede a destruir el proceso
+		if (ExecutableHasTerminated (iRefAppLabVIEW)==0)
+		{
+			TerminateExecutable (iRefAppLabVIEW);
+		
+			if (lstListaComandos!=0)
+			{
+				ListDispose(lstListaComandos);
+				ListDispose(lstListaRespuestas);
+			}
 		}
+	
+	
+		HidePanel(iPanelMonitor);
+	
+		DiscardPanel(iPanelMonitor);
 	}
-	
-	HidePanel(iPanelMonitor);
-	
-	DiscardPanel(iPanelMonitor);
-	
 	return 0;
 }
 

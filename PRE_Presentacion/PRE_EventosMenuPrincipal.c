@@ -52,7 +52,8 @@ int CVICALLBACK PRE_SeleccionMenu (int panel, int control, int event,
 			if (control == pMenu_picTransmisiones)
 			{
 				SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_cnvFondo, ATTR_LEFT, -1000);
-				PRE_UbicarPanel(iPanelCatTransmisiones);
+				PRE_IniciarCatTransmisiones();
+				//PRE_UbicarPanel(iPanelCatTransmisiones);
 			}
 			
 			if (control == pMenu_picEntrenamiento)

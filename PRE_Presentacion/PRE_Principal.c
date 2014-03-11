@@ -48,7 +48,7 @@ int main (int argc, char *argv[])
 	
 	if ((iPanelEntrenamiento= LoadPanel (iPanelPrincipal, "PRE_Principal.uir", pEntrenar)) < 0)
 		return -1;
-	
+
 	//inicializa la interfaz de usuario
 	PRE_InicializarInterfaz();
 	
