@@ -79,12 +79,12 @@ int PRE_InicializarSistema()
 	
 	
 	MOT_EstadoMotores(MOT_DESHABILITAR);
-	DIG_CrearTarea(0, 0);
+	//DIG_CrearTarea(0, 0);
 	
 	//Registra las condiciones de operación actual del sistema
-	SetCtrlVal(iPanelPrincipal, pPrincipal_ledEquipoPXI, mov_VerificarPXI(Tarjeta_01));
-	SetCtrlVal(iPanelPrincipal, pPrincipal_ledBotonRearme, DIG_EstadoEntrada(DIG_REARME));
-	SetCtrlVal(iPanelPrincipal, pPrincipal_ledParoEmergencia, DIG_EstadoEntrada(DIG_PARO_EMERGENCIA));
+	//SetCtrlVal(iPanelPrincipal, pPrincipal_ledEquipoPXI, mov_VerificarPXI(Tarjeta_01));
+	//SetCtrlVal(iPanelPrincipal, pPrincipal_ledBotonRearme, DIG_EstadoEntrada(DIG_REARME));
+	//SetCtrlVal(iPanelPrincipal, pPrincipal_ledParoEmergencia, DIG_EstadoEntrada(DIG_PARO_EMERGENCIA));
 	
 	//inicializa la conexión con la base de datos
 	DBConnection();

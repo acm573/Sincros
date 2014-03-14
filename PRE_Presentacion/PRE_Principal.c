@@ -15,6 +15,7 @@
 #include <cvirte.h>		
 #include <userint.h>
 #include "pre_variables.h"
+#include "var_registroeventos.h"
 
 
 /*****************************************************************************
@@ -49,6 +50,10 @@ int main (int argc, char *argv[])
 	if ((iPanelEntrenamiento= LoadPanel (iPanelPrincipal, "PRE_Principal.uir", pEntrenar)) < 0)
 		return -1;
 
+	Log_Habilitar;
+	
+	Log_Registro;
+	
 	//inicializa la interfaz de usuario
 	PRE_InicializarInterfaz();
 	

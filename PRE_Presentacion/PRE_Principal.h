@@ -21,21 +21,24 @@
 
 #define  pCatTransm                       3       /* callback function: PRE_PanelCatTransmisiones */
 #define  pCatTransm_lstTransmisiones      2       /* control type: listBox, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_cnvFondo              3       /* control type: canvas, callback function: (none) */
-#define  pCatTransm_DECORATION            4       /* control type: deco, callback function: (none) */
-#define  pCatTransm_txtNombreTransmision  5       /* control type: string, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_txtTitulo             6       /* control type: textMsg, callback function: (none) */
-#define  pCatTransm_picEditar             7       /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_picEliminar           8       /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_picGuardar            9       /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_picCancelar           10      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_picCerrar             11      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_numNumeroVelocidades  12      /* control type: numeric, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_picAgregar            13      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_DECORATION_2          14      /* control type: deco, callback function: (none) */
-#define  pCatTransm_tblRelaciones         15      /* control type: table, callback function: PRE_SeleccionCatTransmisiones */
-#define  pCatTransm_TEXTMSG               16      /* control type: textMsg, callback function: (none) */
-#define  pCatTransm_TEXTMSG_2             17      /* control type: textMsg, callback function: (none) */
+#define  pCatTransm_txtNombreTransmision  3       /* control type: string, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_numNumeroVelocidades  4       /* control type: numeric, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_chkLadoIzquierdo      5       /* control type: radioButton, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_chkLadoDerecho        6       /* control type: radioButton, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_tblRelaciones         7       /* control type: table, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_cnvFondo              8       /* control type: canvas, callback function: (none) */
+#define  pCatTransm_DECORATION            9       /* control type: deco, callback function: (none) */
+#define  pCatTransm_txtTitulo             10      /* control type: textMsg, callback function: (none) */
+#define  pCatTransm_picEditar             11      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_picEliminar           12      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_picGuardar            13      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_picCancelar           14      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_picCerrar             15      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_picAgregar            16      /* control type: picture, callback function: PRE_SeleccionCatTransmisiones */
+#define  pCatTransm_DECORATION_2          17      /* control type: deco, callback function: (none) */
+#define  pCatTransm_TEXTMSG               18      /* control type: textMsg, callback function: (none) */
+#define  pCatTransm_TEXTMSG_2             19      /* control type: textMsg, callback function: (none) */
+#define  pCatTransm_lblUbicacion          20      /* control type: textMsg, callback function: PRE_SeleccionCatTransmisiones */
 
 #define  pEntrenar                        4       /* callback function: PRE_PanelEntrenamiento */
 #define  pEntrenar_lstTransmisiones       2       /* control type: listBox, callback function: PRE_SeleccionEntrenamiento */

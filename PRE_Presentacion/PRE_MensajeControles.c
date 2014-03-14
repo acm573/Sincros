@@ -138,6 +138,16 @@ int PRI_MensajeControl(int iPanel, int iControl)
 			case pCatTransm_tblRelaciones:
 				pcMensaje = "Contiene los valores de relación de transmisión para cada una de las velocidades.";
 				break;
+				
+			case pCatTransm_lblUbicacion:
+				pcMensaje = "Indica el lado en que se encuentra ubicado el manipulador con respecto a la transmisión.";
+				break;
+			case pCatTransm_chkLadoDerecho:
+				pcMensaje = "Indica el lado en que se encuentra ubicado el manipulador con respecto a la transmisión.";
+				break;
+			case pCatTransm_chkLadoIzquierdo:
+				pcMensaje = "Indica el lado en que se encuentra ubicado el manipulador con respecto a la transmisión.";
+				break;
 		}
 	}
 	

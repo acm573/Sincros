@@ -111,7 +111,11 @@ typedef enum
 	DIG_PARO_EMERGENCIA
 }stDigitales;
 
-
+typedef struct
+{
+	int iVista;
+	char cTexto[1000];
+}stQuery;
 
 typedef enum
 {

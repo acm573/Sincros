@@ -17,6 +17,7 @@
 #include "pre_tipos.h"
 
 char *GRA_Strcat(int iNoElementos, ...);
+char *GRA_IntStr(int iValor);
 
 
 /*****************************************************************************
@@ -33,24 +34,24 @@ char *GRA_Strcat(int iNoElementos, ...);
 stTransmisiones BDS_LeerTransmisiones(int iPanel, int iControl)
 {
 	stTransmisiones Modo = TRA_SIN_TRANSMISIONES;
-	int iVista;				//referencia a la vista solicitada
 	int iIdTransmision=0;			//campo
 	char cIdentificador[250]={0};	//campo
 	int iLado=0;					//campo
 	int iNoVelocidades=0;			//campo
+	stQuery Query;
 	
 	//limpia la lista
 	DeleteListItem(iPanel, iControl, 0, -1);
 	
 	//insertar aqui llamada a lectura de base de datos
-	DBText("SELECT id_transmisiones, identificador, lado, no_velocidades FROM transmisiones",&iVista);
-	DBMap(iVista, 4, 
+	DBText("SELECT id_transmisiones, identificador, lado, no_velocidades FROM transmisiones ORDER BY identificador",&Query.iVista);
+	DBMap(Query.iVista, 4, 
 		  	Int, &iIdTransmision, 
 			String, cIdentificador, 
 			Int, &iLado, 
 			Int, &iNoVelocidades);
 	
-	while (DBFetchNext(iVista)==DB_SUCCESS)
+	while (DBFetchNext(Query.iVista)==DB_SUCCESS)
 	{
 		InsertListItem(iPanel, iControl, -1, cIdentificador, iIdTransmision);
 		Modo = TRA_CON_TRANSMISIONES;
@@ -59,7 +60,7 @@ stTransmisiones BDS_LeerTransmisiones(int iPanel, int iControl)
 	if (Modo == TRA_CON_TRANSMISIONES)
 		SetCtrlIndex(iPanel, iControl, 0);
 	
-	DBClear(iVista);
+	DBClear(Query.iVista);
 	return Modo;
 }
 
@@ -84,11 +85,14 @@ stTransmisiones BDS_LeerDetalleTransmision(int iPanel, ...)
 	int iNombreTransmision;
 	int iNumeroVelocidades;
 	int iTablaRelaciones;
+	int iIzquierdo;
+	int iDerecho;
 	int iId;
+	int iLadoManipulador;
 	char cDescripcion[250]={0};
 	int iNumVelocidades=0;
 	char cId[5]={0};
-	int iVista=0;
+	stQuery Query;
 	int iNum_Velocidad;
 	double dRelacion;
 	
@@ -98,47 +102,48 @@ stTransmisiones BDS_LeerDetalleTransmision(int iPanel, ...)
 	iNombreTransmision = va_arg(pa, int);
 	iNumeroVelocidades = va_arg(pa, int);
 	iTablaRelaciones = va_arg(pa, int);
+	iIzquierdo = va_arg(pa, int);
+	iDerecho = va_arg(pa, int);
 	iId = va_arg(pa, int);
 	
 	Fmt(cId,"%s<%d",iId);
 	//insertar aqui llamada a lectura de base de datos
 	DBText(GRA_Strcat(2,
-				   "SELECT identificador, no_velocidades FROM transmisiones WHERE id_transmisiones = ",
-				   cId),&iVista);
-	DBMap(iVista, 2, 
+				   "SELECT identificador, no_velocidades, lado FROM transmisiones WHERE id_transmisiones = ",
+				   cId),&Query.iVista);
+	DBMap(Query.iVista, 3, 
 		  	String, cDescripcion, 
-			Int, &iNumVelocidades);
+			Int, &iNumVelocidades,
+		 	Int, &iLadoManipulador);
 	
-	while (DBFetchNext(iVista)==DB_SUCCESS)
+	while (DBFetchNext(Query.iVista)==DB_SUCCESS)
 	{
 		SetCtrlVal(iPanel, iNombreTransmision, cDescripcion);
 		SetCtrlVal(iPanel, iNumeroVelocidades, iNumVelocidades);
+		SetCtrlVal(iPanel, iIzquierdo, !iLadoManipulador);
+		SetCtrlVal(iPanel, iDerecho, iLadoManipulador);
 	}
-	
-	DBClear(iVista);
+	DBClear(Query.iVista);
 	
 	//ahora se obtiene la informacion de las relaciones de las velocidades
 	//asociadas a la transmision que se ha seleccionado
 	DBText(GRA_Strcat(3,
 				   "SELECT numero_velocidad, relacion FROM relaciones WHERE fk_id_transmision = ",
 				   cId,
-					 " ORDER BY numero_velocidad DESC"),&iVista);
-	DBMap(iVista, 2, 
+					 " ORDER BY numero_velocidad DESC"),&Query.iVista);
+	DBMap(Query.iVista, 2, 
 		  	Int, &iNum_Velocidad, 
 			Double, &dRelacion);
 	
 	DeleteTableRows (iPanel, iTablaRelaciones, 1, -1);
-	
-	while (DBFetchNext(iVista)==DB_SUCCESS)
+	while (DBFetchNext(Query.iVista)==DB_SUCCESS)
 	{
 		//inserta un nuevo renglon
 		InsertTableRows (iPanel, iTablaRelaciones, 1, 1,
 						 VAL_USE_MASTER_CELL_TYPE);
-		
 		SetTableCellVal (iPanel, iTablaRelaciones, MakePoint(1,1), dRelacion);
 	}
-	
-	DBClear(iVista);
+	DBClear(Query.iVista);
 	
 	return Modo;
 }
@@ -160,18 +165,76 @@ stTransmisiones BDS_LeerDetalleTransmision(int iPanel, ...)
 stTransmisiones BDS_VerificaDescripcionTransmision(char  *pcNombre)
 {
 	stTransmisiones Modo = TRA_NO_EXISTE;
-	int iVista=0;
+	stQuery Query;
 	
 	DBText(GRA_Strcat(3,
 				   "SELECT * FROM transmisiones WHERE identificador = \"",
-				   pcNombre,"\""),&iVista);
+				   pcNombre,"\""),&Query.iVista);
 	
-	while (DBFetchNext(iVista)==DB_SUCCESS)
+	while (DBFetchNext(Query.iVista)==DB_SUCCESS)
 	{
 		Modo = TRA_EXISTE;
 	}
 	
-	DBClear(iVista);
+	DBClear(Query.iVista);
 	
 	return Modo;
+}
+
+
+
+/*****************************************************************************
+.
+. Función C:			BDS_InformeParaEliminar
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Responde con un mensaje, indicando un reporte de la
+.						información vinculada a la transmisión.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	11 de Marzo de 2014
+.
+*****************************************************************************/
+char *BDS_InformeParaEliminar(int iId, char *pcDescripcion, int iNumVelocidades)
+{
+	static char cMensaje[1000]={0};
+	int iRegistros=0;
+	stQuery Query;
+	
+	FillBytes(cMensaje,0,1000,0);
+	
+	strcat(cMensaje, "Se ha seleccionado para eliminar la transmisión denominada \"");
+	strcat(cMensaje,  pcDescripcion);
+	strcat(cMensaje,  "\" que cuenta con ");
+	strcat(cMensaje,  GRA_IntStr(iNumVelocidades));
+	strcat(cMensaje,  " velocidades configuradas.\n\n");
+	
+	//verifica si tiene una secuencias que dependan de ella
+	DBText(GRA_Strcat(2,
+				   "SELECT * FROM secuencias WHERE fk_id_transmisiones = ",
+				   GRA_IntStr(iId)), &Query.iVista);
+	
+	while (DBFetchNext(Query.iVista)==DB_SUCCESS)
+	{
+		iRegistros++;
+	}
+	DBClear(Query.iVista);	
+	
+	if (iRegistros>0)
+	{
+		strcat(cMensaje,  "Se ha identifcado que existe(n) ");
+		strcat(cMensaje,  GRA_IntStr(iRegistros));
+		strcat(cMensaje,  " configuracion(es) asociadas con esta transmisión. El sistema eliminará automáticamente del\n");
+		strcat(cMensaje,  "catálogo de secuencias este(os) elemento(s), una vez que se confirme este mensaje. \n\n");
+		strcat(cMensaje,  "Al eliminar una secuencia, el sistema incluirá en el proceso de borrado, la información de");
+		strcat(cMensaje,  " aquellas pruebas que no hayan\nconcluido en este momento.\n\n\n");
+	}
+	else
+	{
+		strcat(cMensaje,  "No se identificaron dependencias con alguna configuración de secuencia en el sistema.\n\n\n");
+	}
+	
+	strcat(cMensaje,  "                                                              ");
+	strcat(cMensaje, "¿Desea continuar con el proceso de eliminar?\n");
+	
+	return cMensaje;
 }

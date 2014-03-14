@@ -31,8 +31,15 @@ int PRE_GuardarTransmision(void);
 char *GRA_IntStr(int iValor);
 char *GRA_Strcat(int iNoElementos, ...);
 stTransmisiones BDS_InsertaTransmision(char *pcDescripcion, int iNumVelocidades,
-	double dListaRelaciones[]);
-
+	double dListaRelaciones[], int iLadoManipulador);
+stTransmisiones  BDS_ActualizaTransmision(int iId, int iNumVelocidades, 
+		double dListaRelaciones[], int iLadoManipulador);
+int PRE_SeleccionLadoManipulador(int iControl);
+int PRE_EliminarTransmision(void);
+char *BDS_InformeParaEliminar(int iId, char *pcDescripcion, int iNumVelocidades);
+int PRE_EditarTransmision(void);
+stTransmisiones BDS_EliminarTransmision(int iId);
+int GRA_Items(int panel, int control);
 
 
 
@@ -99,8 +106,9 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 {
 	if (event == EVENT_MOUSE_POINTER_MOVE)
 	{
-		PRE_ResaltarOpcion(panel, control, pCatTransm_cnvFondo, 4, pCatTransm_lstTransmisiones, 
-			pCatTransm_numNumeroVelocidades, pCatTransm_txtNombreTransmision, pCatTransm_tblRelaciones);
+		PRE_ResaltarOpcion(panel, control, pCatTransm_cnvFondo, 7, pCatTransm_lstTransmisiones, 
+			pCatTransm_numNumeroVelocidades, pCatTransm_txtNombreTransmision, pCatTransm_tblRelaciones,
+			pCatTransm_lblUbicacion, pCatTransm_chkLadoDerecho, pCatTransm_chkLadoIzquierdo);
 	}
 	
 	if (event == EVENT_LEFT_CLICK_UP)
@@ -126,7 +134,35 @@ int CVICALLBACK PRE_SeleccionCatTransmisiones (int panel, int control, int event
 			case pCatTransm_lstTransmisiones:
 				PRE_CambioTransmision(panel, control);
 				break;
+				
+			case pCatTransm_picEliminar:
+				PRE_EliminarTransmision();
+				break;
+				
+			case pCatTransm_picEditar:
+				PRE_EditarTransmision();
+				break;
 		}
+	}
+	
+	if (event == EVENT_VAL_CHANGED)
+	{
+		switch (control)
+		{
+			case pCatTransm_lstTransmisiones:
+				PRE_CambioTransmision(panel, control);
+				break;
+				
+			case pCatTransm_chkLadoDerecho:
+				PRE_SeleccionLadoManipulador(pCatTransm_chkLadoDerecho);
+				break;
+				
+			case pCatTransm_chkLadoIzquierdo:
+				PRE_SeleccionLadoManipulador(pCatTransm_chkLadoIzquierdo);
+				break;
+
+		}
+		
 	}
 	
 	if (event == EVENT_VAL_CHANGED)
@@ -162,6 +198,20 @@ int PRE_IniciarCatTransmisiones()
 	if (BDS_LeerTransmisiones(iPanelCatTransmisiones, pCatTransm_lstTransmisiones) == TRA_CON_TRANSMISIONES)
 	{
 		PRE_CambioTransmision(iPanelCatTransmisiones, pCatTransm_lstTransmisiones);
+		
+		//habilita las funciones de editar y eliminar
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 0);
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 0);
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picGuardar, ATTR_DIMMED, 1);
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCancelar, ATTR_DIMMED, 1);
+	}
+	else
+	{
+		//debe deshabilitar las funciones de editar, eliminar
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 1);
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 1);
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picGuardar, ATTR_DIMMED, 1);
+		SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCancelar, ATTR_DIMMED, 1);
 	}
 	
 	PRE_OpcionActiva(-1);
@@ -189,10 +239,14 @@ int PRE_CambioTransmision(int iPanel, int iControl)
 {
 	int iId=0;	
 	
-	GetCtrlVal(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, &iId);
-	BDS_LeerDetalleTransmision(iPanelCatTransmisiones, pCatTransm_txtNombreTransmision,
-				pCatTransm_numNumeroVelocidades, pCatTransm_tblRelaciones, iId);
-		
+	//verifica que tenga por lo menos un elemento
+	if (GRA_Items(iPanelCatTransmisiones, pCatTransm_lstTransmisiones)>0)
+	{
+		GetCtrlVal(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, &iId);
+		BDS_LeerDetalleTransmision(iPanelCatTransmisiones, pCatTransm_txtNombreTransmision,
+					pCatTransm_numNumeroVelocidades, pCatTransm_tblRelaciones, 
+					pCatTransm_chkLadoIzquierdo, pCatTransm_chkLadoDerecho, iId);
+	}
 	return 0;
 }
 
@@ -223,10 +277,18 @@ int PRE_OpcionNuevaTransimision()
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 1);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 1);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCerrar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picGuardar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCancelar, ATTR_DIMMED, 0);
 	SetCtrlAttribute(iPanelPrincipal, pPrincipal_btnMenu, ATTR_DIMMED, 1);
 	
 	SetCtrlAttribute (iPanelCatTransmisiones,
 					  pCatTransm_txtNombreTransmision, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_chkLadoDerecho, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_chkLadoIzquierdo, ATTR_CTRL_MODE,
 					  VAL_HOT);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_tblRelaciones, ATTR_CTRL_MODE,
 					  VAL_HOT);
@@ -275,6 +337,13 @@ int PRE_CancelarProceso()
 					  VAL_INDICATOR);
 	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, ATTR_DIMMED,
 					  0);
+	
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_chkLadoDerecho, ATTR_CTRL_MODE,
+					  VAL_INDICATOR);
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_chkLadoIzquierdo, ATTR_CTRL_MODE,
+					  VAL_INDICATOR);
 	
 	PRE_IniciarCatTransmisiones();
 	
@@ -327,7 +396,7 @@ int PRE_ActualizaTablaRelaciones()
 			//se ha determinado que hacen falta mas renglones en la tabla de relaciones
 			//por lo que se procede a insertar nuevos renglones al final
 			//de la tabla de relaciones
-			InsertTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, iRenglonesActuales,
+			InsertTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, iRenglonesActuales+1,
 						 iRenglonesUsuario-iRenglonesActuales, VAL_USE_MASTER_CELL_TYPE);
 		}
 		else
@@ -336,7 +405,7 @@ int PRE_ActualizaTablaRelaciones()
 			{
 				//se ha determinado que se deben eliminar renglones de la tabla
 				//de relaciones
-				DeleteTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, iRenglonesUsuario,
+				DeleteTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, iRenglonesUsuario+1,
 								 iRenglonesActuales-iRenglonesUsuario);
 			}
 		}
@@ -390,6 +459,7 @@ int PRE_InsertarNuevaTransmision()
 	int iNumVelocidades=0;			//numero de velocidades asociadas
 	double dRelacion=0;				//valor de la relacion de velocidad
 	char cVelocidad[5]={0};			//numero de velocidad en cadena
+	int iLadoManipulador=0;			//indica el lado del manipulador (0 izq 1 der)
 	double *pdListaRelaciones;		//lista de relaciones configuradas
 	
 	//se requeren implementar algunas validaciones antes de iniciar
@@ -424,6 +494,8 @@ int PRE_InsertarNuevaTransmision()
 	if (BDS_VerificaDescripcionTransmision(cDescripcion)== TRA_EXISTE)
 		strcat(cMensajeError,"- Ya existe en el sistema una transmisión con el mismo nombre. \n");
 	
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoIzquierdo, &iLadoManipulador);
+	
 	if (strlen(cMensajeError)>0)
 	{
 		MessagePopup ("Validación de información.", cMensajeError);
@@ -432,11 +504,17 @@ int PRE_InsertarNuevaTransmision()
 	{
 		//inicia el proceso de guardado de la informacion, para lo cual obtiene
 		//la lista de relaciones de las velocidades que se han configurado
-		BDS_InsertaTransmision(cDescripcion, iNumVelocidades, pdListaRelaciones);
+		BDS_InsertaTransmision(cDescripcion, iNumVelocidades, pdListaRelaciones, iLadoManipulador);
+		
+		MessagePopup ("Registro guardado",
+					  "Se almacenó la información correctamente.");
+		
+		//regresa la interfaz al modo menu principal
+		PRE_CancelarProceso();
 	}
 	
 	free(pdListaRelaciones);
-
+	
 	return 0;
 }
 
@@ -455,14 +533,197 @@ int PRE_InsertarNuevaTransmision()
 *****************************************************************************/
 int PRE_ActualizarTransmision()
 {
+	char cMensajeError[500]={0};	//mensaje de error que se haya detectado
+	char cDescripcion[250]={0};		//nombre asignado a la transmision
+	int iNumVelocidades=0;			//numero de velocidades asociadas
+	double dRelacion=0;				//valor de la relacion de velocidad
+	char cVelocidad[5]={0};			//numero de velocidad en cadena
+	int iLadoManipulador=0;			//indica el lado del manipulador (0 izq 1 der)
+	int iId;						//identificador de la transmision
+	double *pdListaRelaciones;		//lista de relaciones configuradas
+	
+	//se requeren implementar algunas validaciones antes de iniciar
+	//el proceso de actualización de la transmision
+	
+	//obtiene el id de la transmision
+	GetCtrlVal(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, &iId);
+	
+	//verifica la informacion del numero de velocidades asocidadas
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, &iNumVelocidades);
+	if (iNumVelocidades == 1)
+		strcat(cMensajeError,"- Se ha dejado el valor por defecto de 1 velocidad. \n");
+	
+	//vefifica los valores de relación para las velocidades capturadas
+	pdListaRelaciones = malloc(sizeof(double)*iNumVelocidades);
+	for (int i=0; i<iNumVelocidades; i++)
+	{
+		GetTableCellVal (iPanelCatTransmisiones, pCatTransm_tblRelaciones,
+						 MakePoint(1,i+1), &dRelacion);
+		pdListaRelaciones[i]=dRelacion;
+		
+		if (dRelacion == 0)
+		{
+			strcat(cMensajeError,
+				   GRA_Strcat(3,"- Para la velocidad ",GRA_IntStr(i+1)," falta indicar la relación. \n"));
+		}
+	}
+	
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoIzquierdo, &iLadoManipulador);
+	
+	if (strlen(cMensajeError)>0)
+	{
+		MessagePopup ("Validación de información.", cMensajeError);
+	}
+	else
+	{
+		//inicia el proceso de guardado de la informacion, para lo cual obtiene
+		//la lista de relaciones de las velocidades que se han configurado
+		BDS_ActualizaTransmision(iId, iNumVelocidades, pdListaRelaciones, iLadoManipulador);
+		
+		MessagePopup ("Registro actualizado",
+					  "Se ha actualizado la información correctamente.");
+		
+		//regresa la interfaz al modo menu principal
+		PRE_CancelarProceso();
+	}
+	
+	free(pdListaRelaciones);
+	
+	return 0;
+}
+
+
+/*****************************************************************************
+.						
+. Función C:			PRE_SeleccionLadoManipulador
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Procesa la selección del usuario para el lado en
+.						que se encontrará ubicado el manipulador para la
+.						transmision que se esta configurando
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	12 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_SeleccionLadoManipulador(int iControl)
+{
+	
+	if (iControl == pCatTransm_chkLadoDerecho)
+	{
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoDerecho, 1);
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoIzquierdo, 0);
+	}
+	else
+	{
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoDerecho, 0);
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoIzquierdo, 1);
+	}
+	
 	
 	return 0;
 }
 
 
 
+/*****************************************************************************
+.						
+. Función C:			PRE_EliminarTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Procesa la selección de eliminar la transmision
+.						que el usuario ha seleccionado en la lista de la
+.						pantalla.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	12 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_EliminarTransmision()
+{
+	char cDescripcion[250]={0};
+	int iNumVelocidades=0;
+	int iId=0;
+	//se debe tomar el id de la transmisión para hacer una investigación
+	//sobre la información que se encuentra vinculada a esta transmision
+	//se propone mostrar en pantalla un informe con el total de datos
+	//que se encuentran relacionados, a fin de que el usuario pueda
+	//tomar la mejor decision sobre eliminar o no el elemento
+	
+	//primero, informar el número de elementos de velocidades que se
+	//estarán eliminando
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_lstTransmisiones, &iId);
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_txtNombreTransmision, cDescripcion);
+	GetCtrlVal (iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, &iNumVelocidades);
+	
+	if (ConfirmPopup ("Eliminar transmisión.", 
+					  BDS_InformeParaEliminar(iId, cDescripcion, iNumVelocidades))==1)
+	{
+		BDS_EliminarTransmision(iId);
+		
+		//limpia la información de los controles
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_txtNombreTransmision, "");
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, 1);
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoIzquierdo, 1);
+		SetCtrlVal (iPanelCatTransmisiones, pCatTransm_chkLadoDerecho, 0);
+		DeleteTableRows (iPanelCatTransmisiones, pCatTransm_tblRelaciones, 1,
+						 -1);
+		
+		MessagePopup ("Transmision eliminada",
+					  "Se ha eliminado la información correctamente.");
+		
+		//regresa la interfaz al modo menu principal
+		PRE_CancelarProceso();
+	}
+	return 0;
+}
 
 
+
+
+/*****************************************************************************
+.						
+. Función C:			PRE_EditarTransmision
+. Responsable:			César Armando Cruz Mendoza
+. Descripcion: 			Procesa la selección para editar el elemento que se
+.						ha seleccionado en la pantalla.
+. Parámetro de entrada:	ninguno
+. Parámetro de salida:	cero
+. Fecha de creación:	13 de Marzo de 2014
+.
+*****************************************************************************/
+int PRE_EditarTransmision()
+{
+	//modifica el estado de los controles para el modo edición
+	PRE_OpcionActiva(TRA_EDITAR_TRANSMISION);
+	
+	//modifica el comportamiento de los controles
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picAgregar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEditar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picEliminar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCerrar, ATTR_DIMMED, 1);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picGuardar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_picCancelar, ATTR_DIMMED, 0);
+	SetCtrlAttribute(iPanelPrincipal, pPrincipal_btnMenu, ATTR_DIMMED, 1);
+	
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_txtNombreTransmision, ATTR_CTRL_MODE,
+					  VAL_INDICATOR);
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_chkLadoDerecho, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute (iPanelCatTransmisiones,
+					  pCatTransm_chkLadoIzquierdo, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_tblRelaciones, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_numNumeroVelocidades, ATTR_CTRL_MODE,
+					  VAL_HOT);
+	SetCtrlAttribute(iPanelCatTransmisiones, pCatTransm_lstTransmisiones, ATTR_DIMMED,
+					  1);
+	
+	PRE_ActualizaTablaRelaciones();	
+	
+	return 0;
+}
 
 
 
